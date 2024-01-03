@@ -1,38 +1,18 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background-color:#5b774e">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="{{ url('/') }}">
-      <img src="{{ url('assets/images/logo.svg') }}" alt="logo" /> </a>
+      <img src="{{ url('assets\images\mothi_log.png') }}" style="height:60px" alt="logo" /> </a>
+   
     <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
-      <img src="{{ url('assets/images/logo-mini.svg') }}" alt="logo" /> </a>
+      <img src="{{ url('assets\images\logomini.png') }}" style="width:40px" alt="logo" /> </a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
       <span class="mdi mdi-menu"></span>
     </button>
-    <ul class="navbar-nav navbar-nav-left header-links">
-      <li class="nav-item d-none d-xl-flex">
-        <a href="#" class="nav-link">Schedule <span class="badge badge-primary ml-1">New</span>
-        </a>
-      </li>
-      <li class="nav-item active d-none d-lg-flex">
-        <a href="#" class="nav-link">
-          <i class="mdi mdi-elevation-rise"></i>Reports</a>
-      </li>
-      <li class="nav-item d-none d-md-flex">
-        <a href="#" class="nav-link">
-          <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
-      </li>
-      <li class="nav-item dropdown d-none d-lg-flex">
-        <a class="nav-link dropdown-toggle px-0" id="quickDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Quick Links </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown pt-3" aria-labelledby="quickDropdown">
-          <a href="#" class="dropdown-item">Schedule <span class="badge badge-primary ml-1">New</span></a>
-          <a href="#" class="dropdown-item"><i class="mdi mdi-elevation-rise"></i>Reports</a>
-          <a href="#" class="dropdown-item"><i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
-        </div>
-      </li>
-    </ul>
+   
     <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
           <i class="mdi mdi-file-outline"></i>
           <span class="count">7</span>
@@ -68,11 +48,11 @@
             </div>
           </a>
         </div>
-      </li>
+      </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
           <i class="mdi mdi-bell-outline"></i>
-          <span class="count bg-success">4</span>
+          <span class="count bg-success">0</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
           <a class="dropdown-item py-3 border-bottom">
@@ -110,7 +90,7 @@
       </li>
       <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-          <span class="profile-text d-none d-md-inline-flex">Richard V.Welsh !</span>
+          <span class="profile-text d-none d-md-inline-flex">Admin</span>
           <img class="img-xs rounded-circle" src="{{ url('assets/images/faces/face8.jpg') }}" alt="Profile image"> </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <a class="dropdown-item p-0">
@@ -126,8 +106,7 @@
               </div>
             </div>
           </a>
-          <a class="dropdown-item mt-2"> Manage Accounts </a>
-          <a class="dropdown-item"> Change Password </a>
+          <a class="dropdown-item mt-2" href="{{ url('/createprofile') }}">  Create Profile</a>
           <a class="dropdown-item"> Check Inbox </a>
           <a class="dropdown-item"> Sign Out </a>
         </div>
