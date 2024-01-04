@@ -6,68 +6,61 @@
     <div class="card card-statistics">
       <h5 class="ml-2 py-3">Create Profile</h5>
       <div class="card-body">
-        <form>
+        <form action="{{ url('createprofiles') }}" method="post" enctype="multipart/form-data">
+          {!! csrf_field() !!}
+          <input type="text" name="admin_id" id="admin_id" class="form-control" hidden value="">
           <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" name="phone">
-              </div>
-              <div class="mb-3">
-                <label for="dob" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" name="dob">
-              </div>
+            <div class="col-lg-6">
+              <label>Name</label></br>
+              <input type="text" name="name" id="name" class="form-control">
+              <br>
+              <label>Email</label></br>
+              <input type="text" name="email" id="email" class="form-control">
+              <br>
+              <label for="Phone">Country</label></br>
+              <input type="text" name="phone" id="phone" class="form-control">
             </div>
+            <div class="col-lg-6">
+              <label>Dob</label></br>
+              <input type="date" name="dob" id="dob" class="form-control">
+              <br>
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-              <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <br>
+              <label for="gender" class="form-label">Gender</label>
+              <div class="input-group">
                 <select class="form-select" id="gender" name="gender">
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="profile_picture" class="form-label">Profile Picture</label>
+
+              <br>
+              <label for="profile" class="form-label">Upload Profile</label>
+              <div class="input-group">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="profile_picture" name="profile_picture"
+                  <input type="file" class="custom-file-input" id="profile" name="image"
                     onchange="displayFileName(this)">
-                  <label class="custom-file-label" for="profile_picture">Choose file</label>
+                  <label class="custom-file-label" for="profile">Choose file</label>
                 </div>
-                <div id="file-name" class="mt-2"></div>
               </div>
+              <div id="file-name" class="mt-2"></div>
+
+              <script>
+                function displayFileName(input) {
+                  var fileName = input.files[0].name;
+                  document.getElementById('file-name').innerText = 'Selected file: ' + fileName;
+                }
+              </script>
+
             </div>
-          </div>
 
-          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-
+          <br>
+          <input type="submit" value="Save Profile" class="btn btn-success">
         </form>
       </div>
     </div>
   </div>
-  <script>
-    function displayFileName(input) {
-      var fileName = input.files[0].name;
-      document.getElementById('file-name').innerText = 'Selected file: ' + fileName;
-    }
-  </script>
 </div>
 
 @endsection
