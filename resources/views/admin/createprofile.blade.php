@@ -1,72 +1,73 @@
 @extends('layout.master')
-
+<!-- col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin  -->
 @section('content')
-<div class="row">
-  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+<div class="">
+  <div class="stretch-card">
     <div class="card card-statistics">
+      <h5 class="ml-2 py-3">Create Profile</h5>
       <div class="card-body">
-        <div
-          class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-          <div class="float-left">
-            <!-- <i class="mdi mdi-cube text-danger icon-lg"></i> -->
-            <i class="mdi mdi-account-box-multiple text-info icon-lg"></i>
-          </div>
-          <div class="float-right">
-            <p class="mb-0 text-right">Users</p>
-            <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">2590</h3>
+        <form>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone">
+              </div>
+              <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob">
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <br>
+                <select class="form-select" id="gender" name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="profile_picture" class="form-label">Profile Picture</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="profile_picture" name="profile_picture"
+                    onchange="displayFileName(this)">
+                  <label class="custom-file-label" for="profile_picture">Choose file</label>
+                </div>
+                <div id="file-name" class="mt-2"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> All User Count
-        </p>
+
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
       </div>
     </div>
   </div>
-  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-    <div class="card card-statistics">
-      <div class="card-body">
-        <div
-          class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-          <div class="float-left">
-            <i class="mdi mdi-receipt text-warning icon-lg"></i>
-          </div>
-          <div class="float-right">
-            <p class="mb-0 text-right">Orders</p>
-            <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">345</h3>
-            </div>
-          </div>
-        </div>
-        <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise Total Orders
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-    <div class="card card-statistics">
-      <div class="card-body">
-        <div
-          class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-          <div class="float-left">
-            <i class="mdi mdi-poll-box text-success icon-lg"></i>
-          </div>
-          <div class="float-right">
-            <p class="mb-0 text-right">Sales</p>
-            <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">5693</h3>
-            </div>
-          </div>
-        </div>
-        <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
-        </p>
-      </div>
-    </div>
-  </div>
- 
+  <script>
+    function displayFileName(input) {
+      var fileName = input.files[0].name;
+      document.getElementById('file-name').innerText = 'Selected file: ' + fileName;
+    }
+  </script>
 </div>
 
 @endsection
