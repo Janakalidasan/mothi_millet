@@ -5,7 +5,7 @@
     
     <div class="stretch-card">
         <div class="card card-statistics">
-            <h5 class="ml-2 py-3">Update Profile</h5>
+        <h3 class="ml-2 py-3"><b>Update Profile</b></h3>
             <div class="card-body">
                 @foreach ($admin as $data)
             

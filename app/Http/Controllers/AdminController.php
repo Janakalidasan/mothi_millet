@@ -21,7 +21,7 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/profileimage', $fileName); // Adjust storage path as needed
+            $file->storeAs('profileimage', $fileName); // Adjust storage path as needed
         } else {
             // Handle the case where no image is provided
             $fileName = null;
@@ -66,7 +66,9 @@ class AdminController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('profileimage', $fileName, 'public'); // Adjust storage path as needed
         }
-    
+    else {
+        $fileName = $admin['image'] ;
+    }
         $admin->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),

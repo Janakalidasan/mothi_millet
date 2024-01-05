@@ -86,7 +86,7 @@
           </a>
           <a class="dropdown-item mt-2" href="{{ url('/createprofile') }}">  Create Profile</a>
           <a class="dropdown-item mt-2" href="{{ url('/updateprofile') }}">  Update Profile</a>
-          <a class="dropdown-item"> View profile</a>
+          <a class="dropdown-item" href="{{ url('/profileshow') }}"> View profile</a>
           <a class="dropdown-item"> Check Inbox </a>
           <a class="dropdown-item"> Sign Out </a>
         </div>

@@ -4,7 +4,7 @@
 <div class="">
   <div class="stretch-card">
     <div class="card card-statistics">
-      <h5 class="ml-2 py-3">Create Profile</h5>
+    <h3 class="ml-2 py-3"><b>Create Profile</b></h3>
       <div class="card-body">
         <form action="{{ url('createprofiles') }}" method="post" enctype="multipart/form-data">
           {!! csrf_field() !!}
