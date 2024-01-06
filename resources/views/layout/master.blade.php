@@ -25,6 +25,7 @@
   <!-- end common css -->
 
   @stack('style')
+   
 </head>
 <body data-base-url="{{url('/')}}">
 
@@ -37,6 +38,7 @@
           @yield('content')
         </div>
         @include('layout.footer')
+   
       </div>
     </div>
   </div>
@@ -60,5 +62,6 @@
   <!-- end common js -->
 
   @stack('custom-scripts')
+  
 </body>
 </html>

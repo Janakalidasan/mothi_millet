@@ -30,7 +30,7 @@
     </li>
 
     <li class="nav-item ">
-      <a class="nav-link" href="{{ url('/charts/chartjs') }}">
+      <a class="nav-link" href="{{ url('/customers') }}">
         <i class="menu-icon mdi mdi-account-search"></i>
         <span class="menu-title">Customers</span>
       </a>

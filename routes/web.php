@@ -26,3 +26,7 @@ Route::post('/updates', [AdminController::class, 'update']);
 
 Route::get('/profileshow', [AdminController::class, 'show']);
 
+Route::get('/customers', [AdminController::class, 'customer'])->name('users.index');
+
+
+Route::get('/get-user', [AdminController::class, 'GetUserData']);
