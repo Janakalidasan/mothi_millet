@@ -193,6 +193,11 @@ public function producttwostore(Request $request): RedirectResponse
     return redirect('producttwo')->with('success', 'Product added successfully.');
 }
 
-
+public function category(): View
+{
+    $productone = ProductOne::all();
+    $producttwo = ProductTwo::all();
+    return view('admin.categroy')->with(['productone' => $productone, 'producttwo' => $producttwo]);
+}
 }
 

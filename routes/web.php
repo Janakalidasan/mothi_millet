@@ -36,3 +36,6 @@ Route::post('/addproductone', [AdminController::class, 'productonestore']);
 
 Route::get('/producttwo', [AdminController::class, 'producttwo']);
 Route::post('/addproducttwo', [AdminController::class, 'producttwostore']);
+
+
+Route::get('/category', [AdminController::class, 'category']);

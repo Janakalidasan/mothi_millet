@@ -41,7 +41,7 @@
             <a class="nav-link" href="{{ url('/basic-ui/dropdowns') }}">Product LIst</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ url('/basic-ui/typography') }}">Categories</a>
+            <a class="nav-link" href="{{ url('category') }}">Categories</a>
           </li>
         </ul>
       </div>
