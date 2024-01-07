@@ -13,7 +13,7 @@
           <div class="float-right">
             <p class="mb-0 text-right">Users</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">2590</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{ $usercount }}</h3>
             </div>
           </div>
         </div>
@@ -32,14 +32,14 @@
             <i class="mdi mdi-receipt text-warning icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Orders</p>
+            <p class="mb-0 text-right">products</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">345</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$totalproduct}}</h3>
             </div>
           </div>
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise Total Orders
+          <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise Total Count
         </p>
       </div>
     </div>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
+          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Total Sales
         </p>
       </div>
     </div>
@@ -68,66 +68,52 @@
 </div>
 <div class="row">
   <div class="col-lg-12 grid-margin">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Orders</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th> # </th>
-                <th> Name </th>
-                <th> Email </th>
-                <th> Date </th>
-                <th> Register </th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-weight-medium"> 1 </td>
-                <td> Herman Beck </td>
-                <td>jana@gmail.com
-                </td>
-                <td> May 15, 2015 </td>
-                </td>
-                <td> Register </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 2 </td>
-                <td> Messsy Adam </td>
-                <td>sakthi@gmail.com
-                </td>
-                <td> July 1, 2015 </td>
-                <td> Register </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 3 </td>
-                <td> John Richards </td>
-                <td>priya@gmail.com
-                </td>
-                <td> Apr 12, 2015 </td>
-                <td> Register </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 4 </td>
-                <td> Peter Meggik </td>
-                <td>deepak@gmail.com
-                </td>
-                <td> May 15, 2015 </td>
-                <td> Register </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 5 </td>
-                <td> Edward </td>
-                <td>jana@gmail.com
-                </td>
-                <td> May 03, 2015 </td>
-                <td> Register </td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="card p-1">
+      <div class="row mb-2">
+        <div class="col-6">
+          <h3><b>User List</b></h3>
         </div>
+      </div>
+
+      <div id="userTableContainer">
+        <table id="user_table" class="table table-responsive table-bordered nowrap w100" style="font-size:10px;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>DOB</th>
+              <th>Address</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($users as $index => $data)
+        <tr class="{{ $index >= 5 ? 'hidden-row' : '' }}">
+          <td>{{ $data['id'] }}</td>
+          <td>{{ $data['name'] }}</td>
+          <td>{{ $data['email'] }}</td>
+          <td>{{ $data['phone'] }}</td>
+          <td>{{ $data['dob'] }}</td>
+          <td>{{ $data['adress'] }}</td>
+          <td>{{ $data['created_at'] }}</td>
+        </tr>
+        @endforeach
+          </tbody>
+        </table>
+        <br>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".hidden-row").hide();
+
+    $("#loadMoreBtn").click(function () {
+      $(".hidden-row").show();
+      $("#loadMoreBtn").hide();
+    });
+  });
+</script>
       </div>
     </div>
   </div>

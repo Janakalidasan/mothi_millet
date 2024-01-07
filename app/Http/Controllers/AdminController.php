@@ -12,11 +12,23 @@ use App\Models\User;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
 use DataTables;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class AdminController extends Controller
 {
 
-   
+    public function dashboard()
+    {
+        $users = User::all();
+        $userCount = User::count();
+        $products = ProductOne::count();
+        $productsTwo = ProductTwo::count();
+        $totalproduct = $products + $productsTwo;
+        return view('admin.dashboard')->with(['users' => $users, 'usercount' => $userCount,'totalproduct'=> $totalproduct]);
+    }
+
     public function index()
     {
         return view('admin.createprofile');
@@ -154,7 +166,7 @@ class AdminController extends Controller
         // Add other fields here
     ]);
 
-    return redirect('productone')->with('success', 'Product added successfully.');
+    return redirect('category')->with('success', 'Product added successfully.');
 }
 
 public function producttwo(): View
@@ -190,7 +202,7 @@ public function producttwostore(Request $request): RedirectResponse
         // Add other fields here
     ]);
 
-    return redirect('producttwo')->with('success', 'Product added successfully.');
+    return redirect('category')->with('success', 'Product added successfully.');
 }
 
 public function category(): View
@@ -199,5 +211,57 @@ public function category(): View
     $producttwo = ProductTwo::all();
     return view('admin.categroy')->with(['productone' => $productone, 'producttwo' => $producttwo]);
 }
+
+//cooies detele
+public function deleteProduct($id)
+{
+    $product = ProductOne::find($id);
+
+    if (!$product) {
+        return redirect()->back()->with('error', 'Product not found.');
+    }
+
+    // Delete associated images
+    if ($product->imageone) {
+        Storage::delete('productoneimages/' . $product->imageone);
+    }
+    if ($product->imagetwo) {
+        Storage::delete('productoneimages/' . $product->imagetwo);
+    }
+    if ($product->imagethree) {
+        Storage::delete('productoneimages/' . $product->imagethree);
+    }
+
+    // Delete the product record
+    $product->delete();
+
+    return redirect()->back()->with('success', 'Product deleted successfully.');
+}
+//powder detele
+public function deleteProducts($id)
+{
+    $product = Producttwo::find($id);
+
+    if (!$product) {
+        return redirect()->back()->with('error', 'Product not found.');
+    }
+
+    // Delete associated images
+    if ($product->imageone) {
+        Storage::delete('producttwoimages/' . $product->imageone);
+    }
+    if ($product->imagetwo) {
+        Storage::delete('producttwoimages/' . $product->imagetwo);
+    }
+    if ($product->imagethree) {
+        Storage::delete('producttwoimages/' . $product->imagethree);
+    }
+
+    // Delete the product record
+    $product->delete();
+
+    return redirect()->back()->with('success', 'Product deleted successfully.');
+}
+
 }
 

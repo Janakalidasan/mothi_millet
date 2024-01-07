@@ -13,9 +13,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/', function () {
+//     return view('admin.dashboard');
+// });
+Route::get('/', [AdminController::class, 'dashboard']);
 
 Route::get('/createprofile', [AdminController::class, 'index']);
 
@@ -39,3 +40,7 @@ Route::post('/addproducttwo', [AdminController::class, 'producttwostore']);
 
 
 Route::get('/category', [AdminController::class, 'category']);
+
+
+Route::delete('/delete/product/{id}', [AdminController::class, 'deleteProduct'])->name('delete.product');
+Route::delete('/delete/products/{id}', [AdminController::class, 'deleteProducts'])->name('delete.products');
