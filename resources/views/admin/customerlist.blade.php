@@ -2,7 +2,8 @@
 
 @section('content')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
 
 <div class="card p-1">
     <div class="row mb-2">
@@ -38,6 +39,30 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <div class="d-flex justify-content-center">
+        <ul class="pagination">
+            <!-- Show the previous page if available -->
+            @if($users->currentPage() > 1)
+                <li class="page-item">
+                    <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev">{{ $users->currentPage() - 1 }}</a>
+                </li>
+            @endif
+
+            <!-- Show the current page -->
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">{{ $users->currentPage() }}</span>
+            </li>
+
+            <!-- Show the next page if available -->
+            @if($users->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">{{ $users->currentPage() + 1 }}</a>
+                </li>
+            @endif
+        </ul>
+    </div>
+    
         <br>
         <div class="d-flex justify-content-end">
         <button class="btn btn-success" onclick="exportToExcel()">Export to Excel</button>

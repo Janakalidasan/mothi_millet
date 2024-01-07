@@ -110,8 +110,8 @@ class AdminController extends Controller
     public function customer(Request $request): View
     {
        
-       $users = User::all();
-        return view('admin.customerlist')->with('users', $users);
+        $users = User::paginate(5);
+        return view('admin.customerlist')->with('users' , $users);
       
     }
     public function getUsers()
