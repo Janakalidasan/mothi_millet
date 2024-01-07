@@ -9,6 +9,8 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\ProductOne;
+use App\Models\ProductTwo;
 use DataTables;
 
 class AdminController extends Controller
@@ -27,7 +29,7 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('profileimage', $fileName); // Adjust storage path as needed
+            $file->storeAs('profileimage', $fileName,'public'); // Adjust storage path as needed
         } else {
             // Handle the case where no image is provided
             $fileName = null;
@@ -116,8 +118,80 @@ class AdminController extends Controller
         return response()->json($output);
     }
 
+    public function productone(): View
+    {
+        return view('admin.productaddone');
+    }
     
-    
+
+    //product store method
+
+    public function productonestore(Request $request): RedirectResponse
+{
+    // Handle file uploads for each image input
+    $imagePaths = [];
+
+    for ($i = 1; $i <= 3; $i++) {
+        $inputName = "image{$i}";
+
+        if ($request->hasFile($inputName)) {
+            $file = $request->file($inputName);
+            $fileName = time() . "_{$file->getClientOriginalName()}";
+            $file->storeAs('productoneimages', $fileName,'public'); // Adjust storage path as needed
+            $imagePaths["image{$i}"] = $fileName;
+        }
+    }
+
+    // Create a new product record
+    ProductOne::create([
+        'product_title' => $request->input('product_title'),
+        'description' => $request->input('description'),
+        'imageone' => $imagePaths['image1'] ?? null,
+        'imagetwo' => $imagePaths['image2'] ?? null,
+        'imagethree' => $imagePaths['image3'] ?? null,
+        'price' => $request->input('price'),
+        'gst' => $request->input('gst'),
+        // Add other fields here
+    ]);
+
+    return redirect('productone')->with('success', 'Product added successfully.');
+}
+
+public function producttwo(): View
+{
+    return view('admin.productaddtwo');
+}
+
+public function producttwostore(Request $request): RedirectResponse
+{
+    // Handle file uploads for each image input
+    $imagePaths = [];
+
+    for ($i = 1; $i <= 3; $i++) {
+        $inputName = "image{$i}";
+
+        if ($request->hasFile($inputName)) {
+            $file = $request->file($inputName);
+            $fileName = time() . "_{$file->getClientOriginalName()}";
+            $file->storeAs('producttwoimages', $fileName,'public'); // Adjust storage path as needed
+            $imagePaths["image{$i}"] = $fileName;
+        }
+    }
+
+    // Create a new product record
+    ProductTwo::create([
+        'product_title' => $request->input('product_title'),
+        'description' => $request->input('description'),
+        'imageone' => $imagePaths['image1'] ?? null,
+        'imagetwo' => $imagePaths['image2'] ?? null,
+        'imagethree' => $imagePaths['image3'] ?? null,
+        'price' => $request->input('price'),
+        'gst' => $request->input('gst'),
+        // Add other fields here
+    ]);
+
+    return redirect('producttwo')->with('success', 'Product added successfully.');
+}
 
 
 }

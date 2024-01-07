@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
   <ul class="nav">
-   <br>
+    <br>
     <li class="nav-item ">
       <a class="nav-link" href="{{ url('/') }}">
         <i class="menu-icon mdi mdi-television"></i>
@@ -10,15 +10,33 @@
     <li class="nav-item ">
       <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="" aria-controls="basic-ui">
         <i class="menu-icon mdi mdi-store"></i>
-   
+
         <span class="menu-title">Product</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse " id="basic-ui">
         <ul class="nav flex-column sub-menu">
+
           <li class="nav-item ">
-            <a class="nav-link" href="{{ url('/basic-ui/buttons') }}">Add Products</a>
+            <a class="nav-link" data-toggle="collapse" href="#add-products" aria-expanded="false"
+              aria-controls="add-products">
+              <i class="menu-icon mdi mdi-store"></i>
+              <span class="menu-title">Add Products</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="add-products">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('productone') }}">Cookies</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('producttwo') }}">Powder</a>
+                </li>
+              </ul>
+            </div>
           </li>
+
+
           <li class="nav-item ">
             <a class="nav-link" href="{{ url('/basic-ui/dropdowns') }}">Product LIst</a>
           </li>

@@ -30,3 +30,9 @@ Route::get('/customers', [AdminController::class, 'customer'])->name('users.inde
 
 
 Route::get('/get-user', [AdminController::class, 'GetUserData']);
+
+Route::get('/productone', [AdminController::class, 'productone']);
+Route::post('/addproductone', [AdminController::class, 'productonestore']);
+
+Route::get('/producttwo', [AdminController::class, 'producttwo']);
+Route::post('/addproducttwo', [AdminController::class, 'producttwostore']);
