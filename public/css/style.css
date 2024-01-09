@@ -1,0 +1,129 @@
+/* footer */
+.footer {
+    background-color: #000000;
+    padding: 20px 0;
+    color: #FAFAFA;
+}
+
+.footer-heading {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer-subheading {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.footer-para {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.footer-input {
+    margin-top: 10px;
+}
+
+.footer-copyright {
+    background-color: #000000;
+    padding: 10px 0;
+    color: #FAFAFA;
+    text-align: center;
+    font-size: 14px;
+}
+#f1{
+  background-color: #000000;
+            color: #FAFAFA;
+            align-items: center;
+            justify-content: center;
+}
+
+/* header */
+#navbarSupportedContent a{
+    margin-left: 40px;
+    
+}
+/* login */
+.loginimage{
+    width: 450px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.login-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: start;
+}
+.login-container p {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    text-align: start;
+}
+
+.form-group input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.over{
+    display:flex;
+    justify-content: space-between;
+}
+.forget{
+  color:red;
+}
+.forgets{
+    color:#000;
+  }
+.login{
+    background-color: red;
+    border: red;
+    padding-left: 60px;
+    padding-right: 60px;
+    color: #fff;
+    
+}
+.logreg .btn{
+    background-color: red;
+}
+.already{
+    display:flex;
+    justify-content: space-between;
+}

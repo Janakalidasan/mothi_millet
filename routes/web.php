@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +19,23 @@ use App\Http\Controllers\AdminController;
 // Route::get('/', function () {
 //     return view('admin.dashboard');
 // });
-Route::get('/', [AdminController::class, 'dashboard']);
+
+//login
+Route::get('/', [LoginController::class, 'index']);
+
+
+Route::get('/signup', [LoginController::class, 'signup']);
+
+
+
+
+
+
+
+
+
+
+// Route::get('/', [AdminController::class, 'dashboard']);
 
 Route::get('/createprofile', [AdminController::class, 'index']);
 
