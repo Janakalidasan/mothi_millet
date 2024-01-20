@@ -25,8 +25,14 @@
         <span class="input-group-text" id="basic-addon1">
         <i class="menu-icon mdi mdi-magnify"></i>
         </span>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" style="font-size:10px;" placeholder="What are you looking for?" aria-label="Search">
     </div>
+    <div class="items">
+    <i class="far fa-heart"></i>
+    <i class="fa fa-shopping-cart"></i>
+    <i class="far fa-user"></i>
+    </div>
+    
 </form>
 
     </div>

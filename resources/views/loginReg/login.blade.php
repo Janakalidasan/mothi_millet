@@ -4,7 +4,7 @@
 <div class="col-lg-1 col-xl-1 col-md-1 col-sm-12">
 </div>
     <div class="col-lg-5 col-xl-5 col-md-5 col-sm-12">
-        <img src="{{ url('assets\images\logimag.png') }}" class="loginimage" alt="logo" />
+        <img src="{{ url('assets\images\logimag.png') }}" class="loginimage img-fluid" alt="logo" />
     </div>
     <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
     <div class="login-container">
@@ -23,6 +23,8 @@
             <input type="submit" class="login btn" value="Login">
             <a  class="forget" href="" style="text-decoration:none;">Forget Password?</a>
         </div>
+<br>
+        <a  class="forget" href="{{url('about-page')}}" style="text-decoration:none;">Go to Ecom Page &nbsp; <i class="fa fa-arrow-right"></i></a>
     </form>
 </div>
     </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -27,7 +28,8 @@ Route::get('/', [LoginController::class, 'index']);
 Route::get('/signup', [LoginController::class, 'signup']);
 
 
-
+//about
+Route::get('/about-page', [UserController::class,'index']);
 
 
 

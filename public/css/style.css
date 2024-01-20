@@ -13,7 +13,12 @@
 .footer-subheading {
     font-size: 16px;
     margin-top: 5px;
+    cursor: pointer;
 }
+.footer-subheading>i{
+    margin-right: 10px;
+}
+
 
 .footer-para {
     font-size: 14px;
@@ -55,7 +60,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 352px;
     text-align: center;
     margin-top: 90px;
     margin-bottom: 90px;
@@ -126,4 +131,57 @@
 .already{
     display:flex;
     justify-content: space-between;
+}
+.sent-bn{
+    border-radius: 0px 7px 7px 0px !important;
+}
+.clientimg{
+    height: 300px;
+}
+.icoservices {
+    height: 55px;
+    margin-top: 20px;
+}
+.cards {
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.cards-1 {
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+.cards:hover{
+     background-color: #DB4444;
+     color: #fff;
+}
+.users{
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+}
+.users-tr{
+    font-size: 20px;
+}
+.items{
+    display: flex;
+     padding: 10px 10px;
+     cursor: pointer;
+}
+.items>i{
+  margin-right: 12px;
+}
+.rate{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+@media (max-width:600px){
+    .loginimage {
+        margin-bottom: -100px !important;
+    }
 }
