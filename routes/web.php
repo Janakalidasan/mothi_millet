@@ -30,11 +30,14 @@ Route::get('/signup', [LoginController::class, 'signup']);
 
 //about
 Route::get('/about-page', [UserController::class,'index']);
+//profile
+Route::get('/profile-page', [UserController::class,'profile']);
 
+//update
+Route::get('/update-profile', [UserController::class,'updateprofile']);
 
-
-
-
+//buy
+Route::get('/buy-page', [UserController::class,'buypage']);
 
 
 // Route::get('/', [AdminController::class, 'dashboard']);

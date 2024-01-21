@@ -10,4 +10,17 @@ class UserController extends Controller
      {
         return view('user.about');
     }
+    public function profile()
+    {
+       return view('user.profile');
+   }
+   public function updateprofile()
+   {
+      return view('user.updateprofile');
+  }
+  public function buypage()
+  {
+     return view('user.buypage');
+ }
+ 
 }

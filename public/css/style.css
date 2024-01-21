@@ -180,8 +180,27 @@
     justify-content: center;
     margin-bottom: 10px;
 }
+.pro-1{
+    height: 450px !important;
+}
+.pro{
+    height: 100px !important;
+    cursor: pointer;
+}
+.mobile-view{
+    display: none !important;
+}
+.lap-view{
+    display: block ;
+}
 @media (max-width:600px){
     .loginimage {
         margin-bottom: -100px !important;
+    }
+    .mobile-view{
+        display: block !important;
+    }
+    .lap-view{
+        display: none  !important;
     }
 }

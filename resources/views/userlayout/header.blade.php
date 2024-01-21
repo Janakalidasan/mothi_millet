@@ -28,9 +28,9 @@
         <input class="form-control me-2" type="search" style="font-size:10px;" placeholder="What are you looking for?" aria-label="Search">
     </div>
     <div class="items">
-    <i class="far fa-heart"></i>
-    <i class="fa fa-shopping-cart"></i>
-    <i class="far fa-user"></i>
+    <a href="{{url('profile-pa')}}" ><i class="far fa-heart"></i></a>
+    <a href="{{url('profile-pa')}}" ><i class="fa fa-shopping-cart"></i></a>
+    <a href="{{url('profile-page')}}" ><i class="far fa-user" ></i></a>
     </div>
     
 </form>
