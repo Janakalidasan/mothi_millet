@@ -27,7 +27,8 @@ Route::get('/', [LoginController::class, 'index']);
 
 Route::get('/signup', [LoginController::class, 'signup']);
 
-
+//Home
+Route::get('/home-page', [UserController::class,'homepage']);
 //about
 Route::get('/about-page', [UserController::class,'index']);
 //profile

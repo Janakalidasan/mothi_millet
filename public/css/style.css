@@ -193,6 +193,49 @@
 .lap-view{
     display: block ;
 }
+.carousel-indicators {
+    bottom: 20px; /* Adjust the position as needed */
+}
+
+.carousel-indicators button {
+    width: 20px; /* Set the width and height to create a circular shape */
+    height: 20px;
+    border-radius: 50%; /* Make it circular */
+    background-color: #ddd; /* Set the background color */
+    border: none; /* Remove border */
+    margin-right: 5px; /* Adjust the spacing between indicators */
+    margin-left: 5px;
+}
+
+.carousel-indicators .active {
+    background-color: #555; /* Set the active indicator color */
+}
+/* .first{
+    margin-top: -400px;
+} */
+.logosas{
+    margin-top: -200%;
+    height: 85px;
+}
+
+.cookieswes{
+    margin-top: -45% !important;
+    width: 86%;
+}
+
+.products{
+    height: 150px;
+}
+.cards-2{
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.products-1 {
+    height: 40px;
+    margin-top: 53px;
+}
 @media (max-width:600px){
     .loginimage {
         margin-bottom: -100px !important;
