@@ -14,4 +14,5 @@ class LoginController extends Controller
     {
        return view('loginReg.register');
    }
+   
 }

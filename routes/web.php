@@ -17,9 +17,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
+// Route::get('/dashboard', function () {
 //     return view('admin.dashboard');
 // });
+
+//dashboard
+
+Route::get('/dashboard', [AdminController::class, 'dashboard']);
 
 //login
 Route::get('/', [LoginController::class, 'index']);
@@ -69,3 +73,7 @@ Route::get('/category', [AdminController::class, 'category']);
 
 Route::delete('/delete/product/{id}', [AdminController::class, 'deleteProduct'])->name('delete.product');
 Route::delete('/delete/products/{id}', [AdminController::class, 'deleteProducts'])->name('delete.products');
+
+
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/login', [UserController::class, 'login'])->name('login');
