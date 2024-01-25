@@ -77,3 +77,4 @@ Route::delete('/delete/products/{id}', [AdminController::class, 'deleteProducts'
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::get('/allproduct', [UserController::class, 'allproduct']);

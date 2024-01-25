@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductOne;
 use App\Models\ProductTwo;
 use Illuminate\Http\Request;
 use App\Models\Register;
@@ -14,6 +15,7 @@ class UserController extends Controller
     {
         return view('user.about');
     }
+    
     public function profile()
     {
         return view('user.profile');
@@ -22,15 +24,17 @@ class UserController extends Controller
     {
         return view('user.updateprofile');
     }
-    public function buypage()
+    public function buypage($id)
     {
+        $product = ProductOne::find($id);
+        $producttwo = ProductTwo::find($id);
         return view('user.buypage');
     }
     public function homepage()
     {
         return view('user.home');
     }
-
+   
 
     public function login(Request $request)
     {
@@ -54,7 +58,8 @@ class UserController extends Controller
             // Verify the password
             if ($user->password === $password) {
                 $products = ProductTwo::all();
-                return view('user.home')->with('products', $products);
+                $productcook = ProductOne::all();
+                return view('user.home')->with('products', $products)->with('productcook', $productcook);
             } else {
                 return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
             }
@@ -62,7 +67,12 @@ class UserController extends Controller
             return redirect()->to('/')->with('error_email', 'Invalid email');
         }
     }
-    
+    public function allproduct()
+    {
+        $products = ProductTwo::all();
+        $productcook = ProductOne::all();
+        return view('user.allproducts')->with('products', $products)->with('productcook', $productcook);
+    }
     /**
      * Log the user out of the application.
      *
