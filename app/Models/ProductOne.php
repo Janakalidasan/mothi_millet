@@ -12,7 +12,7 @@ class ProductOne extends Authenticatable
 {
     protected $table = 'productone';
     protected $primaryKey = 'id';
-    protected $fillable = ['product_title','description','imageone','imagetwo','imagethree','price','gst'];
+    protected $fillable = ['product_title','description','imageone','imagetwo','imagethree','discount','price','gst'];
     use HasFactory;
 }
 

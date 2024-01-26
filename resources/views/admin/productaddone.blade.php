@@ -41,14 +41,15 @@
                     <!-- Add similar blocks for image2 and image3 -->
 
                     <br>
+                    <div>
+                    <label>Discount</label><br>
+                            <input type="number" name="discount" id="discount" class="form-control">
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6">
                             <label>Price</label><br>
-
                             <input type="text" name="price" id="price" class="form-control">
-
-
-
                         </div>
                         <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6">
                             <label>GST</label><br>
