@@ -55,7 +55,11 @@ class AdminController extends Controller
         ]);
 
         // Create a new Rating record
-       
+        $users = User::all();
+        $userCount = User::count();
+        $products = ProductOne::count();
+        $productsTwo = ProductTwo::count();
+        $totalproduct = $products + $productsTwo;
         Rating::create([
     
             'selleractive' => $request->input('selleractive'),
@@ -66,7 +70,7 @@ class AdminController extends Controller
     
         ]);
         // Redirect the user or return a response
-        return redirect('aboutrating')->with('success', 'Rating created successfully!');
+        return view('admin.dashboard')->with(['users' => $users, 'usercount' => $userCount,'totalproduct'=> $totalproduct]);
     }
 
 

@@ -3,7 +3,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">About</li>
     </ol>
 </nav>
@@ -29,11 +29,12 @@
     <br>
     <br>
     <div class="row">
+        @foreach($rating as $rating)
         <div class="col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services.png') }}" alt="" class="icoservices">
                 <div class="card-body">
-                    <h5 class="card-title users"><b>10.5 K</b></h5>
+                    <h5 class="card-title users"><b>{{$rating->sellerActive}} K</b></h5>
                     <p class="card-text">Sallers active our site</p>
                 </div>
             </div>
@@ -42,7 +43,7 @@
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Icon-Sale.png') }}" alt="" class="icoservices">
                 <div class="card-body">
-                    <h5 class="card-title users"><b>33 K</b></h5>
+                    <h5 class="card-title users"><b>{{$rating->monthlyProfit}} K</b></h5>
                     <p class="card-text">Mopnthly Produduct Sale</p>
                 </div>
             </div>
@@ -51,7 +52,7 @@
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services-1.png') }}" alt="" class="icoservices">
                 <div class="card-body">
-                    <h5 class="card-title users"><b>45.5 K</b></h5>
+                    <h5 class="card-title users"><b>{{$rating->customeractive}} K</b></h5>
                     <p class="card-text">Customer active in our site</p>
                 </div>
             </div>
@@ -60,11 +61,12 @@
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services-2.png') }}" alt="" class="icoservices">
                 <div class="card-body">
-                    <h5 class="card-title users"><b>25 K</b></h5>
+                    <h5 class="card-title users"><b>{{$rating->anualgrosssale}} K</b></h5>
                     <p class="card-text">Anual gross sale in our site</p>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
     <br>
     <br>
@@ -88,7 +90,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xl-4 rate">
-        <div class="card cards-1" style="width: 20rem;">
+            <div class="card cards-1" style="width: 20rem;">
                 <img src="{{ url('assets\images\Services-money.png') }}" alt="" class="icoservices">
                 <div class="card-body">
                     <h6 class="card-title users-tr">MONEY BACK GUARANTEE</h6>
