@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 use Illuminate\Http\RedirectResponse;
@@ -33,7 +34,64 @@ class AdminController extends Controller
     {
         return view('admin.createprofile');
     }
+    public function viewrate($id = '1'){
+        if ($id) {
+            $rating = Rating::find($id);
+        } else {
+            $rating = null;
+        }
+        return view('admin.ratingrprovide')->with('rating', $rating);
+    }
+    
+ 
+    public function aboutrating(Request $request){
 
+        // Validate the form data
+        $validatedData = $request->validate([
+            'selleractive' => 'required',
+            'monthlyprofit' => 'required',
+            'customeractive' => 'required',
+            'anualgrosssale' => 'required',
+        ]);
+
+        // Create a new Rating record
+       
+        Rating::create([
+    
+            'selleractive' => $request->input('selleractive'),
+            'monthlyprofit' => $request->input('monthlyprofit'),
+            'customeractive' => $request->input('customeractive'),
+            'phone' => $request->input('phone'),
+            'anualgrosssale' => $request->input('anualgrosssale'),
+    
+        ]);
+        // Redirect the user or return a response
+        return redirect('aboutrating')->with('success', 'Rating created successfully!');
+    }
+
+
+    public function aboutratingmanuval(Request $request,$id){
+        $validatedData = $request->validate([
+            'selleractive' => 'required',
+            'monthlyprofit' => 'required',
+            'customeractive' => 'required',
+            'anualgrosssale' => 'required',
+        ]);
+    
+        // Find the rating by its ID
+        $rating = Rating::findOrFail($id);
+    
+        // Update the rating with the new data
+        $rating->update([
+            'selleractive' => $request->input('selleractive'),
+            'monthlyprofit' => $request->input('monthlyprofit'),
+            'customeractive' => $request->input('customeractive'),
+            'anualgrosssale' => $request->input('anualgrosssale'),
+        ]);
+    
+        // Redirect the user after updating the rating
+        return redirect('aboutrating')->with('success', 'Rating updated successfully!');
+    }
     //profile create and store
     public function store(Request $request): RedirectResponse
     {

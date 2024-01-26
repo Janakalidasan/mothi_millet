@@ -42,8 +42,8 @@ Route::get('/profile-page', [UserController::class,'profile']);
 Route::get('/update-profile', [UserController::class,'updateprofile']);
 
 //buy
-Route::get('/buy-page', [UserController::class,'buypage']);
-
+Route::get('/buy-page-one/{id}', [UserController::class,'buypageone']);
+Route::get('/buy-page-two/{id}', [UserController::class,'buypagetwo']);
 
 // Route::get('/', [AdminController::class, 'dashboard']);
 
@@ -57,6 +57,11 @@ Route::post('/updates', [AdminController::class, 'update']);
 Route::get('/profileshow', [AdminController::class, 'show']);
 
 Route::get('/customers', [AdminController::class, 'customer'])->name('users.index');
+//rating
+Route::get('/aboutrating', [AdminController::class, 'viewrate']);
+Route::post('/ratings', [AdminController::class, 'aboutrating'])->name('ratings.store');
+Route::put('/aboutratingmanuval/{id}', [AdminController::class, 'aboutratingmanuval'])->name('aboutratingmanuval.update');
+
 
 
 Route::get('/get-user', [AdminController::class, 'GetUserData']);

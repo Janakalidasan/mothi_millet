@@ -76,7 +76,7 @@
 
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <button class="btn btn-success">Buy</button>
+                        <a href="{{url('allproduct')}}" class="btn btn-success">Buy</a>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                     <!-- Add to Cart and Buy Now buttons -->
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <button class="btn btn-success">Buy</button>
+                        <a href="{{url('allproduct')}}" class="btn btn-success">Buy</a>
                     </div>
                 </div>
 
@@ -172,7 +172,7 @@
 </div>
 
 <br>
-<div class="container-fluid mt-4">
+<!-- <div class="container-fluid mt-4">
     <div class="row">
         <div class="col d-flex   ">
             <div class="bg-danger" style="width: 1.3%; height: 30px;"></div>
@@ -185,10 +185,10 @@
             <h3>New Arrive</h3>
         </div>
     </div>
-</div>
+</div> -->
 
 <br>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-5">
@@ -238,7 +238,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <br>
 <br>
 <div class="row">

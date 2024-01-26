@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('user.about');
+        $rating = Rating::all();
+        return view('user.about')->with('rating', $rating);
     }
-    
+
     public function profile()
     {
         return view('user.profile');
@@ -24,17 +26,45 @@ class UserController extends Controller
     {
         return view('user.updateprofile');
     }
-    public function buypage($id)
+    public function buypageone($id)
     {
-        $product = ProductOne::find($id);
+        $productone = ProductOne::find($id);
+
+        return view('user.buypagecook')->with('productone', $productone);
+    }
+    public function buypagetwo($id)
+    {
+        // $product = ProductOne::find($id);
         $producttwo = ProductTwo::find($id);
-        return view('user.buypage');
+
+        return view('user.buypage')->with('producttwo', $producttwo);
     }
     public function homepage()
     {
-        return view('user.home');
+        $products = ProductTwo::all();
+        $productcook = ProductOne::all();
+        return view('user.home')->with('products', $products)->with('productcook', $productcook);
     }
-   
+    public function register(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Create a new user record
+        $user = new Register();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password =$request->password; // Encrypt the password before storing
+        $user->save();
+        $products = ProductTwo::all();
+        $productcook = ProductOne::all();
+        // Redirect the user to a specific route or page
+        return view('user.home')->with('products', $products)->with('productcook', $productcook);
+    }
 
     public function login(Request $request)
     {

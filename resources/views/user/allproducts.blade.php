@@ -51,7 +51,7 @@
 
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{url('buy-page')}}"  class="btn btn-success">Buy</a>
+                        <a href="{{ url('buy-page-two', ['id' => $productmain['id']]) }}" class="btn btn-success">Buy</a>
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
                     <!-- Add to Cart and Buy Now buttons -->
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{url('buy-page')}}"  class="btn btn-success">Buy</a>
+                        <a href="{{ url('buy-page-one', ['id' => $productcook['id']]) }}" class="btn btn-success">Buy</a>
                     </div>
                 </div>
 

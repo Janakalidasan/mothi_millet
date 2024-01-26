@@ -13,23 +13,23 @@
 <div class="container">
     <br>
     <div class="d-flex justify-content-center mobile-view">
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('pro-1.png')">
-            <img src="{{ asset('storage/producttwoimages/' . $producttwo->imageone) }}" class="pro" alt="">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $productone->imageone}}')">
+            <img src="{{ asset('storage/productoneimages/' . $productone->imageone) }}" class="pro" alt="">
         </div>&nbsp;&nbsp;&nbsp;
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('pro-2.png')">
-            <img src="{{ asset('storage/producttwoimages/' . $producttwo->imagetwo) }}" class="pro" alt="">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $productone->imagetwo }}')">
+            <img src="{{ asset('storage/productoneimages/' . $productone->imagetwo) }}" class="pro" alt="">
         </div>
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6 d-flex justify-content-center">
             <div class="card mt-3" style="width: 22rem;" id="largeImageContainer">
-                <img src="{{ asset('storage/producttwoimages/' . $producttwo->imageone) }}" alt="Product Image"
-                    class="pro-1">
+                <img src="{{ asset('storage/productoneimages/' . $productone->imageone) }}" alt="Product Image"
+                    class="pro-2">
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
-            <h4>{{ strtoupper($producttwo->product_title) }}</h4>
-            <h6 style="font-size:30px">Rs: <b style="color:red">{{ $producttwo->price }}</b></h6>
+            <h4>{{ strtoupper($productone->product_title) }}</h4>
+            <h6 style="font-size:30px">Rs: <b style="color:red">{{ $productone->price }}</b></h6>
             <div class="star-rating">
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
@@ -37,7 +37,7 @@
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
             </div>
-            <p>{{ $producttwo->description }}</p>
+            <p>{{ $productone->description }}</p>
 
             <h6><b>KG :</b>
                 <button class="btn btn-danger" onclick="changeKG('1kg')">1kg</button>
@@ -57,17 +57,15 @@
                 </div>
 
                 <div class="col-6 col-lg-6">
-                    <div class="col-6 col-lg-6">
-                        <button class="btn btn-danger" type="button" data-bs-toggle="modal"
-                            data-bs-target="#productModal"
-                            onclick="populateModal('{{ strtoupper($producttwo->product_title) }}', '{{ $producttwo->price }}', '{{ $producttwo->description }}')">Buy
-                            Now</button>
-                    </div>
+                    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                        onclick="populateModal('{{ strtoupper($productone->product_title) }}', '{{ $productone->price }}', '{{ $productone->description }}')">Buy
+                        Now</button>
                 </div>
             </div>
 
 
-            <!-- modal -->
+            <!-- Button trigger modal -->
+
 
             <!-- <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel"
                 aria-hidden="true">
@@ -78,13 +76,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" id="productModalBody">
-                           
+                      
                         </div>
                         <button class="btn btn-primary " onclick="buyProduct()">Buy</button>
                     </div>
                 </div>
-            </div>            -->
-
+            </div> -->
             <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -95,7 +92,7 @@
                         </div>
                         <div class="modal-body" id="productModalBody">
                             <!-- Product details will be displayed here -->
-
+                          
                             <!-- Add other product details here -->
                         </div>
                         <div class="modal-footer">
@@ -105,7 +102,6 @@
                 </div>
             </div>
 
-            <!-- QR Code Modal -->
             <!-- QR Code Modal -->
             <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -121,7 +117,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Payment Method Modal -->
             <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
@@ -142,6 +137,7 @@
                     </div>
                 </div>
             </div>
+
             <br>
 
             <div class="card" style="width: 20rem;">
@@ -161,22 +157,21 @@
 
     <br>
     <div class="d-flex justify-content-center lap-view">
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $producttwo->imageone }}')">
-            <img src="{{ asset('storage/producttwoimages/' . $producttwo->imageone) }}" class="pro" alt="">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $productone->imageone }}')">
+            <img src="{{ asset('storage/productoneimages/' . $productone->imageone) }}" class="pro" alt="">
         </div>&nbsp;&nbsp;&nbsp;
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $producttwo->imagetwo }}')">
-            <img src="{{ asset('storage/producttwoimages/' . $producttwo->imagetwo) }}" class="pro" alt="">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $productone->imagetwo }}')">
+            <img src="{{ asset('storage/productoneimages/' . $productone->imagetwo) }}" class="pro" alt="">
         </div>
     </div>
 
 
 </div>
 <br>
-<script src="https://cdn.jsdelivr.net/npm/qrious"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
     function changeColor(button) {
         // Remove 'btn-danger' class from all buttons
@@ -192,7 +187,7 @@
         $("button").not(button).addClass("btn-danger");
     }
     function showLargeImage(imageName) {
-        var imageUrl = "{{ asset('storage/producttwoimages/') }}/" + imageName;
+        var imageUrl = "{{ asset('storage/productoneimages/') }}/" + imageName;
         $("#largeImageContainer img").attr("src", imageUrl);
         $("#largeImageContainer img").removeClass("d-none");
     }
@@ -207,13 +202,12 @@
         var currentCount = parseInt(countInput.val());
 
         // Ensure the count doesn't go below 1
-        if (c > 1) {
+        if (currentCount > 1) {
             countInput.val(currentCount - 1);
         }
     }
-
 </script>
-<!-- buy -->
+<!-- JavaScript Function -->
 <script>
     var selectedKG = ''; // Variable to store selected KG
 
@@ -250,7 +244,7 @@
 
         // Set modal content with product details
         modalTitle.textContent = title;
-        modalBody.innerHTML = '<h6  id="price">Price: Rs: <b style="color:red">' + price + '</b></h6>' +
+        modalBody.innerHTML = '<h6 id="price">Price: Rs: <b style="color:red">' + price + '</b></h6>' +
             '<p>' + description + '</p>' +
             '<p>Selected KG: ' + selectedKG + '</p>' +
             '<p>Product Count: ' + count + '</p>';
@@ -268,20 +262,20 @@
         // Show the QR code modal with price
         $('#qrModal').modal('show');
 
-        var productPrice = document.getElementById('productPrice').innerText;
+        var price = parseFloat(document.getElementById('price').innerText);
 
-            // Generate QR code with the price
-            var qrCodeContainer = document.getElementById('qrCodeContainer');
-            qrCodeContainer.innerHTML = ''; // Clear previous QR code if any
+        // Generate QR code with the price
+        var qrCodeContainer = document.getElementById('qrCodeContainer');
+        qrCodeContainer.innerHTML = ''; // Clear previous QR code if any
 
-            var qr = new QRious({
-                element: qrCodeContainer,
-                value: "Price: " + productPrice,
-                size: 200 // Adjust the size of the QR code as needed
-            });
+        var qr = new QRious({
+            element: qrCodeContainer,
+            value: "Price: Rs " + price,
+            size: 200 // Adjust the size of the QR code as needed
+        });
 
-            // Show QR code modal
-            $('#qrModal').modal('show');
+        // Show QR code modal
+        $('#qrModal').modal('show');
 
     }
 

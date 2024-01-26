@@ -41,7 +41,12 @@
         </ul>
       </div>
     </li>
-
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ url('/aboutrating') }}">
+        <i class="menu-icon mdi mdi-account-search"></i>
+        <span class="menu-title">Rating About</span>
+      </a>
+    </li>
     <li class="nav-item ">
       <a class="nav-link" href="{{ url('/customers') }}">
         <i class="menu-icon mdi mdi-account-search"></i>
