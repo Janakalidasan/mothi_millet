@@ -47,13 +47,13 @@
 <div class="container">
     <div class="row">
         @foreach($products->take(4) as $productmain)
-        <div class="col-lg-3">
+        <div class="col-6 col-lg-3 mb-3 newsixe">
             <div class="card cards-2" style="width: 12rem; position: relative;">
                 <!-- Left -30% container with red background -->
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
-                    <div class="left-text" style="transform: translateY(50%);">
-                        -30%
+                    <div class="left-text" style="transform: translateY(50%);font-size: 14px;">
+                    -{{ $productmain['discount'] }}%
                     </div>
                 </div>
                 <!-- Product image and details -->
@@ -62,7 +62,7 @@
                     <p class="card-title">{{ $productmain['product_title'] }}</p>
                     <div class="d-flex">
                         <p class="card-text text-danger">Rs: {{ $productmain['price'] }}</p>&nbsp;
-                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">360</span>
+                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">{{ $productmain['oldprice'] }}</span>
                     </div>
 
                     <div class="star-rating d-flex">
@@ -76,7 +76,7 @@
 
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{url('allproduct')}}" class="btn btn-success">Buy</a>
+                        <a href="{{url('allproduct')}}" class="btn btn-success buyproductbuton">Buy</a>
                     </div>
                 </div>
 
@@ -117,13 +117,13 @@
 <div class="container">
     <div class="row">
         @foreach($productcook->take(4) as $productcook)
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-6 col-lg-3 col-md-6 mb-3  newsixe">
             <div class="card cards-2" style="width: 12rem; position: relative;">
                 <!-- Left -30% container with red background -->
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
-                    <div class="left-text" style="transform: translateY(50%);">
-                        -30%
+                    <div class="left-text" style="transform: translateY(50%);font-size: 14px;">
+                    -{{ $productcook['discount'] }}%
                     </div>
                 </div>
                 <br>
@@ -133,7 +133,7 @@
                     <p class="card-title">{{ $productcook['product_title'] }}</p>
                     <div class="d-flex">
                         <p class="card-text text-danger">Rs:{{ $productcook['price'] }}</p>&nbsp;
-                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">360</span>
+                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">{{ $productcook['oldprice'] }}</span>
                     </div>
 
                     <div class="star-rating d-flex">
@@ -148,7 +148,7 @@
                     <!-- Add to Cart and Buy Now buttons -->
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{url('allproduct')}}" class="btn btn-success">Buy</a>
+                        <a href="{{url('allproduct')}}" class="btn btn-success buyproductbuton">Buy</a>
                     </div>
                 </div>
 
@@ -168,7 +168,7 @@
 
 <br>
 <div class="container-fluid">
-    <img src="{{ url('assets\images\mix-2.png') }}" alt="" style="width: 73%;height:350px">
+    <img src="{{ url('assets\images\mix-2.png') }}" alt="" class="banner-1">
 </div>
 
 <br>

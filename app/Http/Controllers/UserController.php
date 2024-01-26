@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
+use App\Models\UserProfile;
+
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Models\Register;
@@ -120,5 +122,32 @@ class UserController extends Controller
     //     // Redirect to the login page or any other page after logout
     //     return redirect()->route('login');
     // }
+    public function userprofile(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'altphone' => 'nullable|string|max:255',
+        ]);
+
+        // Create a new UserProfile record
+        
+        UserProfile::create([
+            'firstname' => $validatedData['firstname'],
+            'lastname' => $validatedData['lastname'],
+            'email' => $validatedData['email'],
+            'phone' => $validatedData['phone'],
+            'address' => $validatedData['address'],
+            'altphone' => $validatedData['altphone'],
+        ]);
+
+        // Redirect the user or return a response
+        // For example, you can redirect the user to another page
+        return redirect('home-page')->with('success', 'Profile saved successfully!');
+    }
 
 }

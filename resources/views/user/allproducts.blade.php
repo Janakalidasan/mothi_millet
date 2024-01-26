@@ -22,12 +22,12 @@
 <div class="container">
     <div class="row">
         @foreach($products as $productmain)
-        <div class="col-lg-3 mb-3">
-            <div class="card cards-2" style="width: 12rem; position: relative;">
+        <div class="col-6 col-lg-3 mb-3 newsixe">
+            <div class="card cards-2">
                 <!-- Left -30% container with red background -->
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
-                    <div class="left-text" style="transform: translateY(50%);">
+                    <div class="left-text" style="transform: translateY(50%);font-size: 14px;">
                     -{{ $productmain['discount'] }}%
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{ url('buy-page-two', ['id' => $productmain['id']]) }}" class="btn btn-success">Buy</a>
+                        <a href="{{ url('buy-page-two', ['id' => $productmain['id']]) }}" class="btn btn-success buyproductbuton">Buy</a>
                     </div>
                 </div>
 
@@ -92,12 +92,12 @@
 <div class="container">
     <div class="row">
         @foreach($productcook as $productcook)
-        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+        <div class="col-6 col-lg-3 col-md-6 mb-3 newsixe">
             <div class="card cards-2" style="width: 12rem; position: relative;">
                 <!-- Left -30% container with red background -->
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
-                    <div class="left-text" style="transform: translateY(50%);">
+                    <div class="left-text" style="transform: translateY(50%);font-size: 14px;">
                     -{{ $productcook['discount'] }}%
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     <!-- Add to Cart and Buy Now buttons -->
                     <div class="d-flex justify-content-between mt-2">
                         <button class="btn btn-primary">Add Cart</button>&nbsp;
-                        <a href="{{ url('buy-page-one', ['id' => $productcook['id']]) }}" class="btn btn-success">Buy</a>
+                        <a href="{{ url('buy-page-one', ['id' => $productcook['id']]) }}" class="btn btn-success buyproductbuton">Buy</a>
                     </div>
                 </div>
 

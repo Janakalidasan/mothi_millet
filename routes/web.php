@@ -37,7 +37,7 @@ Route::get('/home-page', [UserController::class,'homepage']);
 Route::get('/about-page', [UserController::class,'index']);
 //profile
 Route::get('/profile-page', [UserController::class,'profile']);
-
+Route::post('/userprofile/store', [UserController::class, 'userprofile'])->name('userprofile.store');
 //update
 Route::get('/update-profile', [UserController::class,'updateprofile']);
 

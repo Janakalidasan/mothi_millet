@@ -13,10 +13,10 @@
 <div class="container">
     <br>
     <div class="d-flex justify-content-center mobile-view">
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('pro-1.png')">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $producttwo->imageone }}')">
             <img src="{{ asset('storage/producttwoimages/' . $producttwo->imageone) }}" class="pro" alt="">
         </div>&nbsp;&nbsp;&nbsp;
-        <div class="card" style="width: 6rem;" onclick="showLargeImage('pro-2.png')">
+        <div class="card" style="width: 6rem;" onclick="showLargeImage('{{ $producttwo->imagetwo }}')">
             <img src="{{ asset('storage/producttwoimages/' . $producttwo->imagetwo) }}" class="pro" alt="">
         </div>
     </div>

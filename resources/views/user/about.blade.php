@@ -30,7 +30,7 @@
     <br>
     <div class="row">
         @foreach($rating as $rating)
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
+        <div class="col-6 col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services.png') }}" alt="" class="icoservices">
                 <div class="card-body">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
+        <div class="col-6 col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Icon-Sale.png') }}" alt="" class="icoservices">
                 <div class="card-body">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
+        <div class="col-6 col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services-1.png') }}" alt="" class="icoservices">
                 <div class="card-body">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
+        <div class="col-6 col-lg-3 col-md-3 col-sm-12 col-xl-3 rate">
             <div class="card cards" style="width: 14rem;">
                 <img src="{{ url('assets\images\Services-2.png') }}" alt="" class="icoservices">
                 <div class="card-body">

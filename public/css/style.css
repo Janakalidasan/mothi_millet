@@ -230,14 +230,22 @@
     height: 135px;
 }
 .cards-2{
-    width: 16rem;
+    width: 12rem !important;
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
 .products-1 {
     height: 40px;
     margin-top: 53px;
+}
+.newsixe{
+    padding-left: 0px !important;
+}
+.banner-1{
+    width: 73%;
+    height:350px
 }
 @media (max-width:600px){
     .loginimage {
@@ -248,5 +256,19 @@
     }
     .lap-view{
         display: none  !important;
+    }
+    .cards-2 {
+        width: 11rem !important;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+    }
+    .buyproductbuton{
+        padding: 18px !important;
+    }
+    .banner-1{
+        width: 100%;
+        height:200px
     }
 }
