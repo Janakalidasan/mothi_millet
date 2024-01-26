@@ -224,6 +224,7 @@ class AdminController extends Controller
         'imagetwo' => $imagePaths['image2'] ?? null,
         'imagethree' => $imagePaths['image3'] ?? null,
         'discount' => $request->input('discount'),
+        'oldprice' => $request->input('oldprice'),
         'price' => $request->input('price'),
         'gst' => $request->input('gst'),
         // Add other fields here
@@ -260,6 +261,8 @@ public function producttwostore(Request $request): RedirectResponse
         'imageone' => $imagePaths['image1'] ?? null,
         'imagetwo' => $imagePaths['image2'] ?? null,
         'imagethree' => $imagePaths['image3'] ?? null,
+        'discount' => $request->input('discount'),
+        'oldprice' => $request->input('oldprice'),
         'price' => $request->input('price'),
         'gst' => $request->input('gst'),
         // Add other fields here

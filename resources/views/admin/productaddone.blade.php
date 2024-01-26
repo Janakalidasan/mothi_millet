@@ -41,10 +41,18 @@
                     <!-- Add similar blocks for image2 and image3 -->
 
                     <br>
-                    <div>
-                    <label>Discount</label><br>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6">
+                        <label>Discount</label><br>
                             <input type="number" name="discount" id="discount" class="form-control">
+                        </div>
+                        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6">
+                        <label>Old Price</label><br>
+                            <input type="number" name="oldprice" id="oldprice" class="form-control">
+                        </div>
                     </div>
+                
                     <br>
                     <div class="row">
                         <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6">

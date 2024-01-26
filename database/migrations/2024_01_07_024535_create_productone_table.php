@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('imagetwo')->nullable();
             $table->string('imagethree')->nullable();
             $table->integer('discount');
+            $table->integer('oldprice');
             $table->integer('price');
             $table->integer('gst');
             $table->timestamps();

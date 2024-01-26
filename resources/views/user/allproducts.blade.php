@@ -28,7 +28,7 @@
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
                     <div class="left-text" style="transform: translateY(50%);">
-                        -30%
+                    -{{ $productmain['discount'] }}%
                     </div>
                 </div>
                 <!-- Product image and details -->
@@ -37,7 +37,7 @@
                     <p class="card-title">{{ $productmain['product_title'] }}</p>
                     <div class="d-flex">
                         <p class="card-text text-danger">Rs: {{ $productmain['price'] }}</p>&nbsp;
-                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">360</span>
+                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">{{ $productmain['oldprice'] }}</span>
                     </div>
 
                     <div class="star-rating d-flex">
@@ -92,13 +92,13 @@
 <div class="container">
     <div class="row">
         @foreach($productcook as $productcook)
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
             <div class="card cards-2" style="width: 12rem; position: relative;">
                 <!-- Left -30% container with red background -->
                 <div class="left-text-container"
                     style="position: absolute; left: 0; top: 0px; width: 25%; height: 17%; background-color: red; color: white; padding: 5px;">
                     <div class="left-text" style="transform: translateY(50%);">
-                        -30%
+                    -{{ $productcook['discount'] }}%
                     </div>
                 </div>
                 <br>
@@ -108,7 +108,7 @@
                     <p class="card-title">{{ $productcook['product_title'] }}</p>
                     <div class="d-flex">
                         <p class="card-text text-danger">Rs:{{ $productcook['price'] }}</p>&nbsp;
-                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">360</span>
+                        <span class="strikeout-text" style="color: grey; text-decoration: line-through;">{{ $productcook['oldprice'] }}</span>
                     </div>
 
                     <div class="star-rating d-flex">
