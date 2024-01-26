@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
 use App\Models\Rating;
@@ -65,7 +66,7 @@ class UserController extends Controller
         // Redirect the user to a specific route or page
         return view('user.home')->with('products', $products)->with('productcook', $productcook);
     }
-
+//user and admin login
     public function login(Request $request)
     {
         // Validation rules
@@ -83,7 +84,7 @@ class UserController extends Controller
 
         // Check if user exists with the given email
         $user = Register::where('email', $email)->first();
-
+        $admin = AdminReg::where('email', $email)->first();
         if ($user) {
             // Verify the password
             if ($user->password === $password) {
@@ -93,8 +94,12 @@ class UserController extends Controller
             } else {
                 return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
             }
-        } else {
-            return redirect()->to('/')->with('error_email', 'Invalid email');
+        } elseif($admin) {
+            if ($admin->password === $password) {
+                return view('admin.dashboard');
+            } else {
+                return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
+            }
         }
     }
     public function allproduct()

@@ -53,6 +53,13 @@
         <span class="menu-title">Customers</span>
       </a>
     </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ url('/orders') }}">
+      <i class="menu-icon mdi mdi-chart-areaspline"></i>
+
+        <span class="menu-title">Orders</span>
+      </a>
+    </li>
     <!-- <li class="nav-item ">
       <a class="nav-link" href="{{ url('/tables/basic-table') }}">
         <i class="menu-icon mdi mdi-table-large"></i>
