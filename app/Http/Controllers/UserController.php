@@ -174,4 +174,13 @@ class UserController extends Controller
         // Redirect back or return a response as needed
         return redirect()->back()->with('success', 'Product added to cart successfully');
     }
+    public function removeFromCart($id)
+{
+    // Logic to remove the product from the cart in the database
+    // For example:
+    ArtToChart::where('product_id', $id)->delete();
+
+    return response()->json(['success' => true]);
+}
+
 }
