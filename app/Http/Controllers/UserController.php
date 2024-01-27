@@ -6,6 +6,7 @@ use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
 use App\Models\UserProfile;
+use App\Models\ArtToChart;
 
 use App\Models\Rating;
 use Illuminate\Http\Request;
@@ -149,5 +150,28 @@ class UserController extends Controller
         // For example, you can redirect the user to another page
         return redirect('home-page')->with('success', 'Profile saved successfully!');
     }
+    public function chartview(){
+        $artchart = ArtToChart::all();
+        return view('user.artchart')->with('artchart', $artchart);
+    }
+    public function addToCart(Request $request)
+    {
+        // Retrieve the product details from the request
+        $productId = $request->input('product_id');
+        $productName = $request->input('product_name');
+        $productPrice = $request->input('product_price');
+        $productGst = $request->input('product_gst');
+        // You can also retrieve other product details as needed
 
+        // Here, you can save the product details to the cart table in the database
+        $cartItem = new ArtToChart();
+        $cartItem->product_id = $productId;
+        $cartItem->product_name = $productName;
+        $cartItem->product_price = $productPrice;
+        $cartItem->product_gst = $productGst;
+        $cartItem->save();
+
+        // Redirect back or return a response as needed
+        return redirect()->back()->with('success', 'Product added to cart successfully');
+    }
 }

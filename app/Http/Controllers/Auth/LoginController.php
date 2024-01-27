@@ -67,4 +67,5 @@ class LoginController extends Controller
    {
       return view('loginReg.login');
   }
+  
 }

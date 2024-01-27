@@ -60,6 +60,12 @@ Route::delete('/delete/products/{id}', [AdminController::class, 'deleteProducts'
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/allproduct', [UserController::class, 'allproduct']);
+
+// routes/web.php
+Route::post('/cart', [UserController::class, 'addToCart']);
+Route::get('/chartview', [UserController::class, 'chartview']);
+
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
