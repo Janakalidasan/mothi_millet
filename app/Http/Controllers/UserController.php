@@ -48,26 +48,26 @@ class UserController extends Controller
         $productcook = ProductOne::all();
         return view('user.home')->with('products', $products)->with('productcook', $productcook);
     }
-    public function register(Request $request)
-    {
-        // Validate the form data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|string|min:8',
-        ]);
+    // public function register(Request $request)
+    // {
+    //     // Validate the form data
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:users|max:255',
+    //         'password' => 'required|string|min:8',
+    //     ]);
 
-        // Create a new user record
-        $user = new Register();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password =$request->password; // Encrypt the password before storing
-        $user->save();
-        $products = ProductTwo::all();
-        $productcook = ProductOne::all();
-        // Redirect the user to a specific route or page
-        return view('user.home')->with('products', $products)->with('productcook', $productcook);
-    }
+    //     // Create a new user record
+    //     $user = new Register();
+    //     $user->name = $request->name;
+    //     $user->email = $request->email;
+    //     $user->password =$request->password; // Encrypt the password before storing
+    //     $user->save();
+    //     $products = ProductTwo::all();
+    //     $productcook = ProductOne::all();
+    //     // Redirect the user to a specific route or page
+    //     return view('user.home')->with('products', $products)->with('productcook', $productcook);
+    // }
 //user and admin login
     public function login(Request $request)
     {
