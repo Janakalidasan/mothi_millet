@@ -9,6 +9,8 @@ use App\Models\Register;
 use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
+use App\Models\Admin;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -47,12 +49,18 @@ class LoginController extends Controller
                 return redirect()->back()->with('error', 'Invalid password')->with('email', $email);
             }
         } elseif ($admin) {
+            // Compare plain text passwords for admin
             if (Hash::check($password, $admin->password)) {
-                return view('admin.dashboard');
+                $users = User::all();
+                $userCount = User::count();
+                $products = ProductOne::count();
+                $productsTwo = ProductTwo::count();
+                $totalproduct = $products + $productsTwo;
+                return view('admin.dashboard')->with(['users' => $users, 'usercount' => $userCount,'totalproduct'=> $totalproduct]); // Redirect to admin dashboard
             } else {
                 return redirect()->back()->with('error', 'Invalid password')->with('email', $email);
             }
-        } else {
+        }else {
             return redirect()->back()->with('error', 'User not found')->with('email', $email);
         }
         

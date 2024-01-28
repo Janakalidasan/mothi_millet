@@ -70,41 +70,41 @@ class UserController extends Controller
     //     return view('user.home')->with('products', $products)->with('productcook', $productcook);
     // }
 //user and admin login
-    public function login(Request $request)
-    {
-        // Validation rules
-        $rules = [
-            'email' => 'required|email|max:255',
-            'password' => 'required',
-        ];
+    // public function login(Request $request)
+    // {
+    //     // Validation rules
+    //     $rules = [
+    //         'email' => 'required|email|max:255',
+    //         'password' => 'required',
+    //     ];
 
-        // Validate the request data
-        $validatedData = $request->validate($rules);
+    //     // Validate the request data
+    //     $validatedData = $request->validate($rules);
 
-        // Retrieve email and password from the validated data
-        $email = strtolower($validatedData['email']);
-        $password = $validatedData['password'];
+    //     // Retrieve email and password from the validated data
+    //     $email = strtolower($validatedData['email']);
+    //     $password = $validatedData['password'];
 
-        // Check if user exists with the given email
-        $user = Register::where('email', $email)->first();
-        $admin = AdminReg::where('email', $email)->first();
-        if ($user) {
-            // Verify the password
-            if ($user->password === $password) {
-                $products = ProductTwo::all();
-                $productcook = ProductOne::all();
-                return view('user.home')->with('products', $products)->with('productcook', $productcook);
-            } else {
-                return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
-            }
-        } elseif($admin) {
-            if ($admin->password === $password) {
-                return view('admin.dashboard');
-            } else {
-                return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
-            }
-        }
-    }
+    //     // Check if user exists with the given email
+    //     $user = Register::where('email', $email)->first();
+    //     $admin = AdminReg::where('email', $email)->first();
+    //     if ($user) {
+    //         // Verify the password
+    //         if ($user->password === $password) {
+    //             $products = ProductTwo::all();
+    //             $productcook = ProductOne::all();
+    //             return view('user.home')->with('products', $products)->with('productcook', $productcook);
+    //         } else {
+    //             return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
+    //         }
+    //     } elseif($admin) {
+    //         if ($admin->password === $password) {
+    //             return view('admin.dashboard');
+    //         } else {
+    //             return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
+    //         }
+    //     }
+    // }
     public function allproduct()
     {
         $products = ProductTwo::all();
