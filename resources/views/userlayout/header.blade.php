@@ -30,7 +30,8 @@
     <div class="items">
     <a href="{{url('profile-pa')}}" ><i class="far fa-heart"></i></a>
     <a href="{{url('chartview')}}" ><i class="fa fa-shopping-cart"></i></a>
-    <a href="{{url('profile-page')}}" ><i class="far fa-user" ></i></a>
+    <a href="{{url('profile-page')}}" title=" {{ session('userName') }}"><i class="far fa-user" ></i>
+  </a>
     </div>
     
 </form>

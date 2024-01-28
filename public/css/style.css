@@ -250,6 +250,7 @@
 .artchart{
     padding: 6px !important;
 }
+
 @media (max-width:600px){
     .loginimage {
         margin-bottom: -100px !important;
