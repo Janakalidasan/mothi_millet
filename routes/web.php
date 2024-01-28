@@ -60,7 +60,8 @@ Route::delete('/delete/products/{id}', [AdminController::class, 'deleteProducts'
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/allproduct', [UserController::class, 'allproduct']);
-Route::post('/remove-from-cart/{id}', [UserController::class, 'removeFromCart'])->name('removeFromCart');
+Route::post('/remove-from-cart/{productId}', [UserController::class, 'removeFromCart'])->name('remove-from-cart');
+
 
 // routes/web.php
 Route::post('/cart', [UserController::class, 'addToCart']);

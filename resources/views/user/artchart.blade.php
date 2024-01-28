@@ -14,7 +14,7 @@
 
     <div class="">
         @foreach($artchart as $product)
-        <div class="product" id="product_{{ $product->id }}">
+        <div class="">
             <h4 id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
             <h6 style="font-size:30px">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice" style="color:red">{{ $product->product_price }}</b><p style="font-size:20px">GST : <span>{{ $product->product_gst }}%</span></p></h6>
             <div class="star-rating">
@@ -38,13 +38,16 @@
                         <button class="btn btn-danger" onclick="decreaseCount({{ $product->id }})">-</button>
                         <input type="text" id="productCount_{{ $product->id }}" class="form-control text-center" value="1"
                             style="width:60px;" readonly>
-                        <button class="btn btn-danger" onclick="increaseCount({{ $product->id }})">+</button>
-                        <button class="btn btn-warning" onclick="removeProduct({{ $product->id }})">Delete</button>
+                        <button class="btn btn-danger" onclick="increaseCount({{ $product->id }})">+</button>&nbsp;&nbsp;
+                        <button class="btn btn-danger" onclick="removeProduct({{ $product->product_id }})">Delete</button>
+
+
                     </div>
                 </div>
             </div>
+           
         </div>
-        <br>
+        <hr>
         @endforeach
         
     </div>
@@ -84,6 +87,9 @@
             ...selectedProducts[productId],
             kg: kg
         };
+
+        // Recalculate the total price when KG changes
+        calculateTotalPrice();
     }
 
     // Function to handle increasing the product count for a specific product
@@ -91,6 +97,9 @@
         var countInput = $('#productCount_' + productId);
         var currentCount = parseInt(countInput.val());
         countInput.val(currentCount + 1);
+
+        // Recalculate the total price when count changes
+        calculateTotalPrice();
     }
 
     // Function to handle decreasing the product count for a specific product
@@ -101,46 +110,54 @@
         // Ensure the count doesn't go below 1
         if (currentCount > 1) {
             countInput.val(currentCount - 1);
+
+            // Recalculate the total price when count changes
+            calculateTotalPrice();
         }
     }
 
-    // Function to handle removing a product from the cart
-    function removeProduct(productId) {
-        // Send an AJAX request to remove the product from the cart
-        $.ajax({
-            type: 'POST',
-            url: '/remove-from-cart/' + productId,
-            data: {
-                _token: '{{ csrf_token() }}',
-            },
-            success: function(response) {
-                if (response.success) {
-                    // Remove the product's HTML from the page
-                    $('#product_' + productId).remove();
-                }
-            }
+    // Function to calculate the total price based on selected products and quantities
+    function calculateTotalPrice() {
+        var totalPrice = 0;
+
+        // Loop through selected products
+        Object.keys(selectedProducts).forEach(function(productId) {
+            var product = selectedProducts[productId];
+            var productPrice = parseFloat($("#productPrice_" + productId).text().trim()); // Get product price
+            var productCount = parseInt($('#productCount_' + productId).val()); // Get product count
+
+            // If product.kg is defined, use it, otherwise default to 1
+            var productWeight = product.kg ? parseFloat(product.kg) : 1;
+
+            // Calculate total price for this product considering the weight
+            var productTotal = productPrice * productCount * productWeight;
+            totalPrice += productTotal;
         });
+
+        // Update the total price in the modal
+        $('#totalPrice').text(totalPrice.toFixed(2));
     }
 
     // Function to handle the buy process and show product details in modal
     function buyProduct() {
         var modalBodyContent = ''; // Variable to store modal body content
-        var totalPrice = 0; // Variable to store total price
 
         // Loop through selected products
         Object.keys(selectedProducts).forEach(function(productId) {
             var product = selectedProducts[productId];
             var productName = $("#productName_" + productId).text().trim(); // Get product name
-            var productPrice = parseFloat($("#productPrice_" + productId).text().trim().replace('Rs: ', '')); // Get product price
+            var productPrice = parseFloat($("#productPrice_" + productId).text().trim()); // Get product price
             var productCount = parseInt($('#productCount_' + productId).val()); // Get product count
 
-            // Calculate total price for this product
-            var productTotal = productPrice * productCount;
-            totalPrice += productTotal;
+            // If product.kg is defined, use it, otherwise default to 1
+            var productWeight = product.kg ? parseFloat(product.kg) : 1;
+
+            // Calculate total price for this product considering the weight
+            var productTotal = productPrice * productCount * productWeight;
 
             // Generate HTML content for this product
             modalBodyContent += '<h6>' + productName + '</h6>' +
-                '<p>Price: Rs: <b style="color:red">' + productPrice.toFixed(2) + '</b></p>' +
+                '<p>Price per unit: Rs: <b style="color:red">' + productPrice.toFixed(2) + '</b></p>' +
                 '<p>KG: ' + (product.kg ? product.kg : 'Not specified') + '</p>' + // Check if kg is specified
                 '<p>Quantity: ' + productCount + '</p>' +
                 '<p>Total: Rs: <b style="color:red">' + productTotal.toFixed(2) + '</b></p>' +
@@ -148,10 +165,39 @@
         });
 
         // Add total price to modal body content
-        modalBodyContent += '<h5>Total Price: Rs: <b style="color:red">' + totalPrice.toFixed(2) + '</b></h5>';
+        modalBodyContent += '<h5>Total Price: Rs: <b style="color:red" id="totalPrice">0.00</b></h5>';
 
         // Set modal content with product details and total price
         $('#productModalBody').html(modalBodyContent);
+
+        // Calculate total price initially
+        calculateTotalPrice();
     }
+
+    function removeProduct(productId) {
+    // Send an AJAX request to remove the product from the cart
+    $.ajax({
+        type: 'POST',
+        url: '/remove-from-cart/' + productId, // Route to delete item from the database
+        data: {
+            _token: '{{ csrf_token() }}',
+        },
+        success: function(response) {
+            if (response.success) {
+                // Reload the page after successful removal
+                location.reload();
+            } else {
+                console.error('Failed to remove product from cart:', response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error removing product from cart:', error);
+        }
+    });
+}
+
+
 </script>
+
+
 @endsection
