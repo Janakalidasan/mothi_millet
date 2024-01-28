@@ -1,4 +1,4 @@
-@extends('userlayout.master')
+@extends('layouts.master')
 @section('content')
 <div class="row">
     <div class="col-lg-1 col-xl-1 col-md-1 col-sm-12"></div>
@@ -25,7 +25,7 @@
                     <a class="forget" href="" style="text-decoration:none;">Forget Password?</a>
                 </div>
                 <br>
-                <a class="forget" href="{{ url('about-page') }}" style="text-decoration:none;">Go to Ecom Page &nbsp; <i class="fa fa-arrow-right"></i></a>
+                <a class="forget" href="{{url('signup')}}" style="text-decoration:none;">Go to SignUp &nbsp; <i class="fa fa-arrow-right"></i></a>
             </form>
         </div>
     </div>

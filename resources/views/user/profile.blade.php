@@ -3,7 +3,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a>Home</a></li>
+        <li class="breadcrumb-item"><a href="{{url('home-page')}}">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">My Account</li>
     </ol>
 </nav>

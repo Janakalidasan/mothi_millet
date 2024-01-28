@@ -17,7 +17,7 @@
           <a class="nav-link " href="{{url('about-page')}}" aria-disabled="true">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " aria-disabled="true" href="{{url('signup')}}">SignUp</a>
+          <a class="nav-link " aria-disabled="true" href=""></a>
         </li>
       </ul>
       <form class="d-flex" role="search">

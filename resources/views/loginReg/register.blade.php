@@ -1,4 +1,4 @@
-@extends('userlayout.master')
+@extends('layouts.master')
 
 @section('content')
 <div class="row">

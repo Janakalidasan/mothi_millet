@@ -4,8 +4,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a>Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Buy Page</li>
+    <li class="breadcrumb-item"><a href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
     </ol>
 </nav>
 <br>
