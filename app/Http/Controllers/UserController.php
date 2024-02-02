@@ -172,7 +172,7 @@ class UserController extends Controller
         $cartItem->save();
 
         // Redirect back or return a response as needed
-        return redirect()->back()->with('success', 'Product added to cart successfully');
+        return redirect('chartview')->with('success', 'Product added to cart successfully');
     }
     public function removeFromCart($productId)
     {

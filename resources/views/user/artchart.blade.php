@@ -4,7 +4,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
     </ol>
 </nav>
 <br>
@@ -13,42 +13,39 @@
 
     <div class="">
         @foreach($artchart as $product)
-        <div class="">
-            <h4 id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
-            <h6 style="font-size:30px">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice" style="color:red">{{ $product->product_price }}</b><p style="font-size:20px">GST : <span>{{ $product->product_gst }}%</span></p></h6>
-            <div class="star-rating">
-                <i class="fas fa-star" style="color: #FFAD33;"></i>
-                <i class="fas fa-star" style="color: #FFAD33;"></i>
-                <i class="fas fa-star" style="color: #FFAD33;"></i>
-                <i class="fas fa-star" style="color: #FFAD33;"></i>
-                <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
-            </div>
+            <div class="">
+                <h4 id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
+                <h6 style="font-size:30px">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice" style="color:red">{{ $product->product_price }}</b><p style="font-size:20px">GST : <span>{{ $product->product_gst }}%</span></p></h6>
+                <div class="star-rating">
+                    <i class="fas fa-star" style="color: #FFAD33;"></i>
+                    <i class="fas fa-star" style="color: #FFAD33;"></i>
+                    <i class="fas fa-star" style="color: #FFAD33;"></i>
+                    <i class="fas fa-star" style="color: #FFAD33;"></i>
+                    <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
+                </div>
 
-            <h6><b>KG :</b>
-                <button class="btn btn-danger" onclick="changeKG('1kg', {{ $product->id }})">1kg</button>
-                <button class="btn btn-danger" onclick="changeKG('2kg', {{ $product->id }})">2kg</button>
-                <button class="btn btn-danger" onclick="changeKG('3kg', {{ $product->id }})">3kg</button>
-            </h6>
+                <h6><b>KG :</b>
+                    <button class="btn btn-danger" onclick="changeKG('1kg', {{ $product->id }})">1kg</button>
+                    <button class="btn btn-danger" onclick="changeKG('2kg', {{ $product->id }})">2kg</button>
+                    <button class="btn btn-danger" onclick="changeKG('3kg', {{ $product->id }})">3kg</button>
+                </h6>
 
-            <br>
-            <div class="row">
-                <div class="col-6">
-                    <div class="d-flex">
-                        <button class="btn btn-danger" onclick="decreaseCount({{ $product->id }})">-</button>
-                        <input type="text" id="productCount_{{ $product->id }}" class="form-control text-center" value="1"
-                            style="width:60px;" readonly>
-                        <button class="btn btn-danger" onclick="increaseCount({{ $product->id }})">+</button>&nbsp;&nbsp;
-                        <button class="btn btn-danger" onclick="removeProduct({{ $product->product_id }})">Delete</button>
-
-
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex">
+                            <button class="btn btn-danger" onclick="decreaseCount({{ $product->id }})">-</button>
+                            <input type="text" id="productCount_{{ $product->id }}" class="form-control text-center" value="1"
+                                   style="width:60px;" readonly>
+                            <button class="btn btn-danger" onclick="increaseCount({{ $product->id }})">+</button>&nbsp;&nbsp;
+                            <button class="btn btn-danger" onclick="removeProduct({{ $product->id }})">Delete</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
-           
-        </div>
-        <hr>
+            <hr>
         @endforeach
-        
     </div>
 
     <!-- Single Buy Button -->
@@ -173,30 +170,28 @@
         calculateTotalPrice();
     }
 
+    // Function to remove a product from the cart
     function removeProduct(productId) {
-    // Send an AJAX request to remove the product from the cart
-    $.ajax({
-        type: 'POST',
-        url: '/remove-from-cart/' + productId, // Route to delete item from the database
-        data: {
-            _token: '{{ csrf_token() }}',
-        },
-        success: function(response) {
-            if (response.success) {
-                // Reload the page after successful removal
-                location.reload();
-            } else {
-                console.error('Failed to remove product from cart:', response.message);
+        // Send an AJAX request to remove the product from the cart
+        $.ajax({
+            type: 'POST',
+            url: '/remove-from-cart/' + productId,
+            data: {
+                _token: '{{ csrf_token() }}',
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Reload the page after successful removal
+                    location.reload();
+                } else {
+                    console.error('Failed to remove product from cart:', response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error removing product from cart:', error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error removing product from cart:', error);
-        }
-    });
-}
-
-
+        });
+    }
 </script>
-
 
 @endsection

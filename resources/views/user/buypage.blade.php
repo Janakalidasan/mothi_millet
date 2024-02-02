@@ -59,10 +59,20 @@
 
                 <div class="col-6 col-lg-6">
                     <div class="col-6 col-lg-6">
-                        <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                        <!-- <button class="btn btn-danger" type="button" data-bs-toggle="modal"
                             data-bs-target="#productModal"
                             onclick="populateModal('{{ strtoupper($producttwo->product_title) }}', '{{ $producttwo->price }}', '{{ $producttwo->description }}')">Buy
-                            Now</button>
+                            Now</button> -->
+                            <form method="POST" action="{{ url('cart') }}">
+                            @csrf
+                            <!-- Include other product details as hidden input fields -->
+                            <input type="hidden" name="product_id" value="{{ $producttwo['id'] }}">
+                            <input type="hidden" name="product_name" value="{{ $producttwo['product_title'] }}">
+                            <input type="hidden" name="product_price" value="{{ $producttwo['price'] }}">
+                            <input type="hidden" name="product_gst" value="{{ $producttwo['gst'] }}">
+                            <!-- Add to Cart button -->
+                            <button type="submit" class="btn btn-danger artchart">Buy Now</button>
+                        </form>
                     </div>
                 </div>
             </div>
