@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('kg');
             $table->string('quantity');
             $table->string('total_price');
+            $table->string('ordertype');
             $table->string('status');
             $table->timestamps();
         });

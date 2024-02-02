@@ -54,9 +54,9 @@
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="{{ url('/orders') }}">
+      <a class="nav-link" href="{{ url('/order') }}">
       <i class="menu-icon mdi mdi-chart-areaspline"></i>
-
+      
         <span class="menu-title">Orders</span>
       </a>
     </li>

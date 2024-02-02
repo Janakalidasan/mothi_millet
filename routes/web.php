@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+
 use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -62,6 +64,11 @@ Route::post('/remove-from-cart/{productId}', [UserController::class, 'removeFrom
 // routes/web.php
 Route::post('/cart', [UserController::class, 'addToCart']);
 Route::get('/chartview', [UserController::class, 'chartview']);
+
+///order
+Route::get('/order', [OrderController::class, 'index']);
+Route::post('/update-order-status/{orderId}', [OrderController::class, 'updateStatus']);
+
 
 Auth::routes();
 
