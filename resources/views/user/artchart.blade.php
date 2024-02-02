@@ -50,7 +50,7 @@
 
     <!-- Single Buy Button -->
     <div class="text-center mt-4">
-        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#productModal">Buy Now</button>
+        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#productModal" onclick="buyProduct()">Buy Now</button>
     </div>
 
     <!-- Modal -->
@@ -65,7 +65,14 @@
                     <!-- Product details will be displayed here -->
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="buyProduct()">Buy</button>
+                    <!-- Payment options -->
+                    <label class="form-check-label mr-3">
+                        <input type="radio" name="paymentOption" value="cod" checked> Cash on Delivery
+                    </label>
+                    <label class="form-check-label">
+                        <input type="radio" name="paymentOption" value="online"> Online Payment
+                    </label>
+                    <button class="btn btn-primary" onclick="details()">Buy</button>
                 </div>
             </div>
         </div>
@@ -134,6 +141,14 @@
         $('#totalPrice').text(totalPrice.toFixed(2));
     }
 
+//     function details() {
+//     var confirmMessage = 'Your Profile is completed. You can proceed to buy now or complete your profile if it is incomplete. Do you want to go to the profile page now?';
+//     if (confirm(confirmMessage)) {
+//         window.location.href = '{{ url("/profile-page") }}'; // Change '/profile' to the actual URL of your profile page
+//     } 
+// }
+
+
     // Function to handle the buy process and show product details in modal
     function buyProduct() {
         var modalBodyContent = ''; // Variable to store modal body content
@@ -168,6 +183,21 @@
 
         // Calculate total price initially
         calculateTotalPrice();
+
+        // // Get the selected payment option
+        // var paymentOption = $('input[name=paymentOption]:checked').val();
+
+        // // Here, you can handle the buy process based on the selected payment option
+        // if (paymentOption === 'cod') {
+        //     // Perform actions for cash on delivery
+        //     alert('Cash on Delivery selected');
+        // } else if (paymentOption === 'online') {
+        //     // Perform actions for online payment
+        //     alert('Online Payment selected');
+        // }
+
+        // Close the modal after processing the buy action
+        $('#productModal').modal('hide');
     }
 
     // Function to remove a product from the cart
