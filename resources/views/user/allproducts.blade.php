@@ -135,7 +135,17 @@
 
                     <!-- Add to Cart and Buy Now buttons -->
                     <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-primary">Add Cart</button>&nbsp;
+                    <form method="POST" action="{{ url('cart') }}">
+                            @csrf
+                            <!-- Include other product details as hidden input fields -->
+                            <input type="hidden" name="product_id" value="{{ $productcook['id'] }}">
+                            <input type="hidden" name="product_name" value="{{ $productcook['product_title'] }}">
+                            <input type="hidden" name="product_price" value="{{ $productcook['price'] }}">
+                            <input type="hidden" name="product_gst" value="{{ $productcook['gst'] }}">
+                            <!-- Add to Cart button -->
+                            <button type="submit" class="btn btn-primary artchart">Add to Cart</button>
+                        </form>
+                        &nbsp;
                         <a href="{{ url('buy-page-one', ['id' => $productcook['id']]) }}"
                             class="btn btn-success buyproductbuton">Buy</a>
                     </div>

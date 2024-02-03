@@ -42,6 +42,28 @@
             </tbody>
         </table>
         <br>
+        <div class="d-flex justify-content-center">
+        <ul class="pagination">
+            <!-- Show the previous page if available -->
+            @if($order->currentPage() > 1)
+                <li class="page-item">
+                    <a class="page-link" href="{{ $order->previousPageUrl() }}" rel="prev">{{ $order->currentPage() - 1 }}</a>
+                </li>
+            @endif
+
+            <!-- Show the current page -->
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">{{ $order->currentPage() }}</span>
+            </li>
+
+            <!-- Show the next page if available -->
+            @if($order->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $order->nextPageUrl() }}" rel="next">{{ $order->currentPage() + 1 }}</a>
+                </li>
+            @endif
+        </ul>
+    </div>
         <div class="d-flex justify-content-center"></div>
         <br>
       

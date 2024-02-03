@@ -18,9 +18,11 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::orderBy('created_at', 'desc')->get();
-        return view('admin.orderdetails')->with('order',$orders);
+        $users = Order::paginate(5);
+        return view('admin.orderdetails')->with('order', $users);
     }
+    
+    
 
 
 
@@ -52,7 +54,7 @@ class OrderController extends Controller
         }
     
         // Return success response or redirect to a success page
-        return response()->json(['success' => true, 'message' => 'Order placed successfully']);
+        return redirect('orderdashboard');
     }
     
 
@@ -80,24 +82,21 @@ class OrderController extends Controller
  
     public function orderdashboard() {
         $userId = session('id');
-    
+        
         // Retrieve store orders associated with the current user
-        $storeOrders = Order::where('buyer_id', $userId)->get();
-    
+        $storeOrders = Order::where('buyer_id', $userId)->paginate(5);
+        
         // If there are store orders associated with the user
         if($storeOrders->isNotEmpty()) {
-            // Retrieve orders belonging to the current user
-            $orders = Order::where('buyer_id', $userId)->orderBy('created_at', 'desc')->get();
-            
-            // Pass the orders to the view
-            return view('user.dashboard')->with('order', $orders);
-        }
-        // If there are no store orders associated with the user
-        else {
+            // Pass the paginated orders to the view
+            return view('user.dashboard')->with('order', $storeOrders);
+        } else {
+            // If there are no store orders associated with the user
             // You might want to handle this case, for example, redirect to a page
             // indicating that there are no orders available.
             return redirect()->back()->with('error', 'No orders found for the current user.');
         }
     }
+    
     
 }
