@@ -68,6 +68,7 @@ Route::get('/chartview', [UserController::class, 'chartview']);
 ///order
 Route::get('/order', [OrderController::class, 'index']);
 Route::post('/update-order-status/{orderId}', [OrderController::class, 'updateStatus']);
+Route::post('/store-order', [OrderController::class, 'store'])->name('store.order');
 
 
 Auth::routes();

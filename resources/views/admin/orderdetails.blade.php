@@ -25,7 +25,8 @@
                     <th>Total Price</th>
                     <th>Order Type</th>
                     <th>Status</th>
-                    <th>Action</th> <!-- New column for action buttons -->
+                    <th>Action</th>
+                    <th>Order Date</th>  <!-- New column for action buttons -->
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
                     <td>{{ $data['total_price'] }}</td>
                     <td>{{ $data['ordertype'] }}</td>
                     <td>{{ $data['status'] }}</td>
+                   
                     <td>
                         @if($data['status'] == 'Pending')
                             <button class="btn btn-warning" onclick="changeStatus({{ $data['id'] }}, 'Dispatched')">Dispatch</button>
@@ -54,6 +56,8 @@
                             <!-- Show no button for delivered status -->
                         @endif
                     </td>
+                    <td>{{ $data['created_at']->format('Y-m-d') }}</td>
+
                 </tr>
                 @endforeach
             </tbody>
