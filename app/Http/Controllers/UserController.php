@@ -49,62 +49,7 @@ class UserController extends Controller
         $productcook = ProductOne::all();
         return view('user.home')->with('products', $products)->with('productcook', $productcook);
     }
-    // public function register(Request $request)
-    // {
-    //     // Validate the form data
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users|max:255',
-    //         'password' => 'required|string|min:8',
-    //     ]);
-
-    //     // Create a new user record
-    //     $user = new Register();
-    //     $user->name = $request->name;
-    //     $user->email = $request->email;
-    //     $user->password =$request->password; // Encrypt the password before storing
-    //     $user->save();
-    //     $products = ProductTwo::all();
-    //     $productcook = ProductOne::all();
-    //     // Redirect the user to a specific route or page
-    //     return view('user.home')->with('products', $products)->with('productcook', $productcook);
-    // }
-//user and admin login
-    // public function login(Request $request)
-    // {
-    //     // Validation rules
-    //     $rules = [
-    //         'email' => 'required|email|max:255',
-    //         'password' => 'required',
-    //     ];
-
-    //     // Validate the request data
-    //     $validatedData = $request->validate($rules);
-
-    //     // Retrieve email and password from the validated data
-    //     $email = strtolower($validatedData['email']);
-    //     $password = $validatedData['password'];
-
-    //     // Check if user exists with the given email
-    //     $user = Register::where('email', $email)->first();
-    //     $admin = AdminReg::where('email', $email)->first();
-    //     if ($user) {
-    //         // Verify the password
-    //         if ($user->password === $password) {
-    //             $products = ProductTwo::all();
-    //             $productcook = ProductOne::all();
-    //             return view('user.home')->with('products', $products)->with('productcook', $productcook);
-    //         } else {
-    //             return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
-    //         }
-    //     } elseif($admin) {
-    //         if ($admin->password === $password) {
-    //             return view('admin.dashboard');
-    //         } else {
-    //             return redirect()->to('/')->with('error', 'Invalid password')->with('email', $email);
-    //         }
-    //     }
-    // }
+  
     public function allproduct()
     {
         $products = ProductTwo::all();
@@ -150,10 +95,14 @@ class UserController extends Controller
         // For example, you can redirect the user to another page
         return redirect('home-page')->with('success', 'Profile saved successfully!');
     }
-    public function chartview(){
-        $artchart = ArtToChart::all();
+    public function chartview() {
+        // Retrieve only the cart items associated with the currently logged-in user
+        $userId = session('id');
+        $artchart = ArtToChart::where('user_id', $userId)->get();
+    
         return view('user.artchart')->with('artchart', $artchart);
     }
+    
     public function addToCart(Request $request)
     {
         // Retrieve the product details from the request
@@ -165,6 +114,7 @@ class UserController extends Controller
 
         // Here, you can save the product details to the cart table in the database
         $cartItem = new ArtToChart();
+        $cartItem->user_id = session('id');
         $cartItem->product_id = $productId;
         $cartItem->product_name = $productName;
         $cartItem->product_price = $productPrice;

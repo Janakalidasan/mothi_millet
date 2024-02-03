@@ -71,6 +71,10 @@ Route::post('/update-order-status/{orderId}', [OrderController::class, 'updateSt
 Route::post('/store-order', [OrderController::class, 'store'])->name('store.order');
 
 
+//order-dashboard
+
+Route::get('/orderdashboard', [OrderController::class, 'orderdashboard']);
+
 Auth::routes();
 
 

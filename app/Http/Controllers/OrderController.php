@@ -10,7 +10,7 @@ use App\Models\ArtToChart;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Models\Register;
+use App\Models\storeorder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session; // Import Session facade
 
@@ -18,10 +18,14 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $order = Order::all();
-        return view('admin.orderdetails')->with('order',$order);
+        $orders = Order::orderBy('created_at', 'desc')->get();
+        return view('admin.orderdetails')->with('order',$orders);
     }
-    public function store(Request $request)
+
+
+
+  
+        public function store(Request $request)
     {
         // Retrieve form data
         $buyerName = $request->input('buyer_name');
@@ -33,6 +37,7 @@ class OrderController extends Controller
         // Process each selected product and store in the database
         foreach ($selectedProducts as $productId => $productDetails) {
             $order = new Order();
+            $order->buyer_id = session('id');
             $order->buyer_name = $buyerName;
             $order->address = $address;
             $order->phone_no = $phoneNo;
@@ -41,6 +46,7 @@ class OrderController extends Controller
             $order->kg = $productDetails['kg'];
             $order->quantity = $productDetails['quantity'];
             $order->status = "Pending";
+             $order->total_price = $productDetails['total_price'];
              $order->total_price = $productDetails['total_price'];
             $order->save();
         }
@@ -72,38 +78,26 @@ class OrderController extends Controller
         return response()->json(['success' => true, 'message' => 'Order status updated successfully']);
     }
  
+    public function orderdashboard() {
+        $userId = session('id');
+    
+        // Retrieve store orders associated with the current user
+        $storeOrders = Order::where('buyer_id', $userId)->get();
+    
+        // If there are store orders associated with the user
+        if($storeOrders->isNotEmpty()) {
+            // Retrieve orders belonging to the current user
+            $orders = Order::where('buyer_id', $userId)->orderBy('created_at', 'desc')->get();
+            
+            // Pass the orders to the view
+            return view('user.dashboard')->with('order', $orders);
+        }
+        // If there are no store orders associated with the user
+        else {
+            // You might want to handle this case, for example, redirect to a page
+            // indicating that there are no orders available.
+            return redirect()->back()->with('error', 'No orders found for the current user.');
+        }
+    }
+    
 }
-// public function store(Request $request)
-// {
-//     // Validate the incoming request data
-//     $validatedData = $request->validate([
-//         'buyer_name' => 'required|string|max:255',
-//         'address' => 'required|string|max:255',
-//         'phone_no' => 'required|string|max:20',
-//         'ordertype' => 'required|string|max:255', // Validate ordertype
-//     ]);
-
-//     // Store the order details in the database
-//     $order = new Order();
-//     $order->buyer_name = $validatedData['buyer_name'];
-//     $order->address = $validatedData['address'];
-//     $order->phone_no = $validatedData['phone_no'];
-//     $order->ordertype = $validatedData['ordertype'];
-//     $order->status = "Pending";
-
-//     // Parse and process the products data
-//     $products = json_decode($request->input('products'));
-
-//     // Iterate over each product
-//     foreach ($products as $productId => $productData) {
-//         // Store product details
-//         $order->product_name = $productData->name;
-//         $order->kg = $productData->weight;
-//         $order->quantity = $productData->count;
-//         $order->total_price = $productData->price * $productData->count * $productData->weight;
-//         $order->save();
-//     }
-
-//     // Return success response
-//     return response()->json(['success' => true, 'message' => 'Order placed successfully']);
-// }

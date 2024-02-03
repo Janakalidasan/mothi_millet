@@ -17,6 +17,9 @@
           <a class="nav-link " href="{{url('about-page')}}" aria-disabled="true">About</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link " href="{{url('orderdashboard')}}" aria-disabled="true">Dashboard</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link " aria-disabled="true" href=""></a>
         </li>
       </ul>
