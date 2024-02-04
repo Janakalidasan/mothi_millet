@@ -7,25 +7,21 @@
     </div>
     <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
         <div class="login-container">
-            <h2>Login</h2>
-            <p>Enter your details below</p>
-            <form class="login-form" action="{{ route('login') }}" method="post">
+            <h2>Password Reset</h2>
+            <form class="login-form" action="{{ route('password.update') }}" method="post">
                 @csrf <!-- Laravel CSRF protection -->
-
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" placeholder="Enter Email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password" placeholder="Enter password" name="password" required>
                 </div>
                 <div class="over logreg">
-                    <input type="submit" class="login btn" value="Login">
-                    <a class="forget" style="text-decoration:none;" href="{{url('forgetpassword')}}">Forget Password?</a>
+                    <input type="submit" class="login btn" value="Submit">
                 </div>
                 <br>
-                <a class="forget" href="{{url('signup')}}" style="text-decoration:none;">Go to SignUp &nbsp; <i class="fa fa-arrow-right"></i></a>
             </form>
         </div>
     </div>

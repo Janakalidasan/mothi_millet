@@ -30,7 +30,8 @@ Route::get('/', [LoginController::class, 'index']);
 Route::get('/signup', [LoginController::class, 'signup']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+Route::get('/forgetpassword', [LoginController::class, 'forgetpassword'])->name('forgetpassword');
+Route::post('/updatepass', [RegisterController::class, 'updatepass'])->name('password.update');
 Route::get('/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/profile-page', [UserController::class, 'profile']);
 Route::post('/userprofile/store', [UserController::class, 'userprofile'])->name('userprofile.store');

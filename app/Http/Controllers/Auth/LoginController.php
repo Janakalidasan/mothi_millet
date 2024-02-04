@@ -103,6 +103,9 @@ class LoginController extends Controller
     return redirect('/');
 }
 
-    
+public function forgetpassword()
+{
+    return view('loginReg.forgetpassword');
+}
 
 }

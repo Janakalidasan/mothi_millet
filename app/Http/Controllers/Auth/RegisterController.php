@@ -40,4 +40,33 @@ class RegisterController extends Controller
         // Redirect the user to the home page with products
         return view('user.home')->with('products', $products)->with('productcook', $productcook);
     }
+    public function updatepass(Request $request)
+    {
+        // Retrieve the new password from the form submission
+        // Validate the form data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+
+        // Retrieve the email and new password from the form submission
+        $email = $request->input('email');
+        $newPassword = $request->input('password');
+
+        // Find the user by email
+        $user = Register::where('email', $email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        // Update the user's password
+        $user->password = bcrypt($newPassword);
+        $user->update();
+
+        return redirect('/')->with('success', 'Password updated successfully');
+      
+    }
+    
+    
 }
