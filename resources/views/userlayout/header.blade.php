@@ -32,12 +32,19 @@
     </div>
     <div class="items">
     <a href="{{url('profile-pa')}}" ><i class="far fa-heart"></i></a>
-    <a href="{{url('chartview')}}" ><i class="fa fa-shopping-cart"></i></a>
+    <a href="{{ url('chartview') }}">
+    <div class="cart-icon-container">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count">{{ session('chartcount') }}</span>
+    </div>
+</a>
+
     <a href="{{url('profile-page')}}" title=" {{ session('userName') }}"><i class="far fa-user" ></i>
-    <a href="{{ route('logout') }}" title="Logout">
+  
+  </a>
+  <a href="{{ route('logout') }}" title="Logout">
     <i class="fas fa-sign-out-alt"></i>
 </a>
-  </a>
     </div>
     
 </form>

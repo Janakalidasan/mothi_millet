@@ -96,12 +96,22 @@ class UserController extends Controller
         return redirect('home-page')->with('success', 'Profile saved successfully!');
     }
     public function chartview() {
-        // Retrieve only the cart items associated with the currently logged-in user
+        // Retrieve the user's session ID
         $userId = session('id');
+        
+        // Retrieve only the cart items associated with the currently logged-in user
         $artchart = ArtToChart::where('user_id', $userId)->get();
-    
-        return view('user.artchart')->with('artchart', $artchart);
+        
+        // Get the count of items in the cart for the user
+        $chartcount = $artchart->count();
+        
+        // Store the count in the session
+        session(['chartcount' => $chartcount]);
+        
+        return view('user.artchart')->with(['artchart' => $artchart, 'chartcount' => $chartcount]);
     }
+    
+    
     
     public function addToCart(Request $request)
     {

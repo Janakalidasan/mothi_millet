@@ -9,11 +9,12 @@ use App\Models\Register;
 use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
-use App\Models\Admin;
+use App\Models\ArtToChart;
 use App\Models\User;
-
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
     /**
      * Handle an authentication attempt.
      *
@@ -47,6 +48,16 @@ class LoginController extends Controller
                 $userId = $user->id;
 
                 session(['userName' => $userName, 'id' => $userId]);
+                $userId = session('id');
+        
+                // Retrieve only the cart items associated with the currently logged-in user
+                $artchart = ArtToChart::where('user_id', $userId)->get();
+                
+                // Get the count of items in the cart for the user
+                $chartcount = $artchart->count();
+                
+                // Store the count in the session
+                session(['chartcount' => $chartcount]);
 
                 $products = ProductTwo::all();
                 $productcook = ProductOne::all();
@@ -81,6 +92,17 @@ class LoginController extends Controller
     {
         return view('loginReg.login');
     }
+    
+    public function logout()
+{
+    // Clear the user's session
+    session()->forget('userName');
+    session()->forget('id');
+    session()->forget('chartcount');
+    // Redirect the user to the login page or any other desired page
+    return redirect('/');
+}
+
     
 
 }

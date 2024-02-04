@@ -21,11 +21,14 @@ Route::middleware(['auth'])->group(function () {
     // For example:
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
-
+   
+    
+ 
 });
 
-
-
+Route::get('/', [LoginController::class, 'index']);
+Route::get('/signup', [LoginController::class, 'signup']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/dashboard', [AdminController::class, 'dashboard']);
@@ -34,8 +37,7 @@ Route::post('/userprofile/store', [UserController::class, 'userprofile'])->name(
 Route::get('/update-profile', [UserController::class, 'updateprofile']);
 Route::get('/home-page', [UserController::class, 'homepage']);
 // Public Routes
-Route::get('/', [LoginController::class, 'index']);
-Route::get('/signup', [LoginController::class, 'signup']);
+
 Route::get('/about-page', [UserController::class, 'index']);
 Route::get('/buy-page-one/{id}', [UserController::class, 'buypageone']);
 Route::get('/buy-page-two/{id}', [UserController::class, 'buypagetwo']);
