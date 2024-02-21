@@ -27,7 +27,7 @@
                                 style="height:100px">
                         </p>
                         <p class="dets" style="margin-bottom:0px">Product name: {{$productdetails->product_title}}</p>
-                        <p class="dets">Price: {{$productdetails->price}} + GST: {{$productdetails->gst}}%</p>
+                        <p class="dets">Price: {{$productdetails->price}} <br> GST: {{$productdetails->gst}}% (Add on price)</p>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
                                 style="height:100px">
                         </p>
                         <p class="dets" style="margin-bottom:0px">Product name: {{$productdetails->product_title}}</p>
-                        <p class="dets">Price: {{$productdetails->price}} + GST: {{$productdetails->gst}}%</p>
+                        <p class="dets">Price: {{$productdetails->price}} <br>GST: {{$productdetails->gst}}% (Add on price)</p>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>

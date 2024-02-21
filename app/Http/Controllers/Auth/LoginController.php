@@ -12,6 +12,7 @@ use App\Models\ProductTwo;
 use App\Models\ArtToChart;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
@@ -21,6 +22,13 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function userdashboard()
+    {
+        $products = ProductTwo::all();
+        $productcook = ProductOne::all();
+        return view('user.home')->with(['products' => $products, 'productcook' => $productcook]);
+    }
     public function login(Request $request)
     {
         // Validation rules
@@ -49,13 +57,13 @@ class LoginController extends Controller
 
                 session(['userName' => $userName, 'id' => $userId]);
                 $userId = session('id');
-        
+
                 // Retrieve only the cart items associated with the currently logged-in user
                 $artchart = ArtToChart::where('user_id', $userId)->get();
-                
+
                 // Get the count of items in the cart for the user
                 $chartcount = $artchart->count();
-                
+
                 // Store the count in the session
                 session(['chartcount' => $chartcount]);
 
@@ -92,20 +100,20 @@ class LoginController extends Controller
     {
         return view('loginReg.login');
     }
-    
-    public function logout()
-{
-    // Clear the user's session
-    session()->forget('userName');
-    session()->forget('id');
-    session()->forget('chartcount');
-    // Redirect the user to the login page or any other desired page
-    return redirect('/');
-}
 
-public function forgetpassword()
-{
-    return view('loginReg.forgetpassword');
-}
+    public function logout()
+    {
+        // Clear the user's session
+        session()->forget('userName');
+        session()->forget('id');
+        session()->forget('chartcount');
+        // Redirect the user to the login page or any other desired page
+        return redirect('/');
+    }
+
+    public function forgetpassword()
+    {
+        return view('loginReg.forgetpassword');
+    }
 
 }

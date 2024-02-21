@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-primary">Add Cart</button>&nbsp;
+                        <a href="{{url('allproduct')}}" class="btn btn-primary">Add Cart</a>&nbsp;
                         <a href="{{url('allproduct')}}" class="btn btn-success buyproductbuton">Buy</a>
                     </div>
                 </div>

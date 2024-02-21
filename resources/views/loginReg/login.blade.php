@@ -25,7 +25,12 @@
                     <a class="forget" style="text-decoration:none;" href="{{url('forgetpassword')}}">Forget Password?</a>
                 </div>
                 <br>
-                <a class="forget" href="{{url('signup')}}" style="text-decoration:none;">Go to SignUp &nbsp; <i class="fa fa-arrow-right"></i></a>
+                <div>
+                <a class="forget btn" style="background-color:#000;color:#fff" href="{{url('signup')}}" style="text-decoration:none;">SignUp</a>
+             
+                <a class="forget btn" style="background-color:red;color:#fff" href="{{ url('homes') }}" style="text-decoration:none;">home page</a>
+                </div>
+               
             </form>
         </div>
     </div>

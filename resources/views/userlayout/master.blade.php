@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Star Admin Pro Laravel Dashboard Template</title>
+  <title>Mothi Millet</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,9 +27,26 @@
   <!-- end common css -->
 
   @stack('style')
+  <style>
+    /* .bgs{
+    
+    background-image: url('https://img.freepik.com/free-vector/blank-brown-notepaper-design-vector_53876-173620.jpg?t=st=1708539395~exp=1708542995~hmac=e1c769d780a757541b969c08d3df85aea354f6c9312d93e7e6c9859c29e0fbde&w=360'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    } */
+    .bgs{
+    
+    background-image: url('./assets/images/mothilogo.png'); 
+    background-size: contain; 
+    background-position:center;
+    background-repeat: repeat; 
+    height: 900px;
+
+    }
+  </style>
    
 </head>
-<body data-base-url="{{url('/')}}">
+<body data-base-url="{{url('/')}}" class="bgs">
 
   <div class="container-scroller" id="app">
     @include('userlayout.header')
