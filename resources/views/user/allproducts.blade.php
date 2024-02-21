@@ -1,5 +1,11 @@
 @extends('userlayout.master')
 @section('content')
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 
 <div class="container-fluid mt-4">
     <div class="row">

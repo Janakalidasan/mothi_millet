@@ -33,14 +33,20 @@ class UserController extends Controller
     public function buypageone($id)
     {
         $productone = ProductOne::find($id);
-
+        if (!session()->has('id')) {
+            // If the user is not logged in, return an error message or redirect to the login page
+            return redirect()->back()->with('error', 'Please log in to add products to the cart');
+        }
         return view('user.buypagecook')->with('productone', $productone);
     }
     public function buypagetwo($id)
     {
         // $product = ProductOne::find($id);
         $producttwo = ProductTwo::find($id);
-
+        if (!session()->has('id')) {
+            // If the user is not logged in, return an error message or redirect to the login page
+            return redirect()->back()->with('error', 'Please log in to add products to the cart');
+        }
         return view('user.buypage')->with('producttwo', $producttwo);
     }
     public function homepage()
@@ -115,13 +121,19 @@ class UserController extends Controller
     
     public function addToCart(Request $request)
     {
+        // Check if the user is logged in
+        if (!session()->has('id')) {
+            // If the user is not logged in, return an error message or redirect to the login page
+            return redirect()->back()->with('error', 'Please log in to add products to the cart');
+        }
+    
         // Retrieve the product details from the request
         $productId = $request->input('product_id');
         $productName = $request->input('product_name');
         $productPrice = $request->input('product_price');
         $productGst = $request->input('product_gst');
         // You can also retrieve other product details as needed
-
+    
         // Here, you can save the product details to the cart table in the database
         $cartItem = new ArtToChart();
         $cartItem->user_id = session('id');
@@ -130,10 +142,11 @@ class UserController extends Controller
         $cartItem->product_price = $productPrice;
         $cartItem->product_gst = $productGst;
         $cartItem->save();
-
+    
         // Redirect back or return a response as needed
         return redirect('chartview')->with('success', 'Product added to cart successfully');
     }
+    
     public function removeFromCart($productId)
     {
         try {

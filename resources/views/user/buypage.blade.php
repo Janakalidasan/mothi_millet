@@ -1,7 +1,11 @@
 @extends('userlayout.master')
 @section('content')
 
-
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">

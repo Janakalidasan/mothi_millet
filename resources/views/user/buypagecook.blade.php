@@ -1,7 +1,11 @@
 @extends('userlayout.master')
 @section('content')
 
-
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -57,9 +61,18 @@
                 </div>
 
                 <div class="col-6 col-lg-6">
-                    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
-                        onclick="populateModal('{{ strtoupper($productone->product_title) }}', '{{ $productone->price }}', '{{ $productone->description }}')">Buy
-                        Now</button>
+                    <div class="col-6 col-lg-6">
+                        <form method="POST" action="{{ url('cart') }}">
+                            @csrf
+                            <!-- Include other product details as hidden input fields -->
+                            <input type="hidden" name="product_id" value="{{ $productone['id'] }}">
+                            <input type="hidden" name="product_name" value="{{ $productone['product_title'] }}">
+                            <input type="hidden" name="product_price" value="{{ $productone['price'] }}">
+                            <input type="hidden" name="product_gst" value="{{ $productone['gst'] }}">
+                            <!-- Add to Cart button -->
+                            <button type="submit" class="btn btn-danger artchart">Buy Now</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -92,7 +105,7 @@
                         </div>
                         <div class="modal-body" id="productModalBody">
                             <!-- Product details will be displayed here -->
-                          
+
                             <!-- Add other product details here -->
                         </div>
                         <div class="modal-footer">
