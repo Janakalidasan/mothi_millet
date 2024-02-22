@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Best Selling Products</h3>
+            <h3 style="color:#fff;">Best Selling Products</h3>
         </div>
     </div>
 </div>
@@ -107,7 +107,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Cookies</h3>
+            <h3 style="color:#fff;">Cookies</h3>
         </div>
     </div>
 </div>

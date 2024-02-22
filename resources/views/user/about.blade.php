@@ -13,11 +13,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-12 col-xl-5">
-            <h3><b>Our Story</b></h3>
-            <p>Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in
+            <h3 style="color:#fff;"><b>Our Story</b></h3>
+            <p style="color:#fff;">Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in
                 Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has
                 10,500 sallers and 300 brands and serves 3 millioons customers across the region. </p>
-            <p>Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in
+            <p style="color:#fff;">Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in
                 Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has
                 10,500 sallers and 300 brands and serves 3 millioons customers across the region. </p>
         </div>

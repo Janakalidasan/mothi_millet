@@ -9,7 +9,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
+    <li class="breadcrumb-item"><a style="color:#fff" href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
 
         <!-- <li class="breadcrumb-item active" aria-current="page">Buy Page</li> -->
     </ol>
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
-            <h4>{{ strtoupper($producttwo->product_title) }}</h4>
-            <h6 style="font-size:30px">Rs: <b style="color:red">{{ $producttwo->price }}</b></h6>
+            <h4 style="color:#fff">{{ strtoupper($producttwo->product_title) }}</h4>
+            <h6 style="font-size:30px;color:#fff">Rs: <b style="color:red">{{ $producttwo->price }}</b></h6>
             <div class="star-rating">
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
@@ -42,9 +42,9 @@
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
             </div>
-            <p>{{ $producttwo->description }}</p>
+            <p style="color:#fff">{{ $producttwo->description }}</p>
 
-            <h6><b>KG :</b>
+            <h6 style="color:#fff"><b>KG :</b>
                 <button class="btn btn-danger" onclick="changeKG('1kg')">1kg</button>
                 <button class="btn btn-danger" onclick="changeKG('2kg')">2kg</button>
                 <button class="btn btn-danger" onclick="changeKG('3kg')">3kg</button>

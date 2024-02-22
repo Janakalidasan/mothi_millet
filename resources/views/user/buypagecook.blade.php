@@ -32,8 +32,8 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
-            <h4>{{ strtoupper($productone->product_title) }}</h4>
-            <h6 style="font-size:30px">Rs: <b style="color:red">{{ $productone->price }}</b></h6>
+            <h4 style="color:#fff">{{ strtoupper($productone->product_title) }}</h4>
+            <h6 style="font-size:30px;color:#fff">Rs: <b style="color:red">{{ $productone->price }}</b></h6>
             <div class="star-rating">
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
@@ -41,9 +41,9 @@
                 <i class="fas fa-star" style="color: #FFAD33;"></i>
                 <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
             </div>
-            <p>{{ $productone->description }}</p>
+            <p style="color:#fff">{{ $productone->description }}</p>
 
-            <h6><b>KG :</b>
+            <h6 style="color:#fff"><b>KG :</b>
                 <button class="btn btn-danger" onclick="changeKG('1kg')">1kg</button>
                 <button class="btn btn-danger" onclick="changeKG('2kg')">2kg</button>
                 <button class="btn btn-danger" onclick="changeKG('3kg')">3kg</button>

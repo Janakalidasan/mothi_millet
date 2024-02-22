@@ -4,7 +4,7 @@
 <br>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
+        <li class="breadcrumb-item"><a style="color:#fff;"href="{{ url('allproduct') }}"><i class="fas fa-arrow-left"></i> Back</a></li>
     </ol>
 </nav>
 <br>
@@ -14,8 +14,8 @@
     <div class="">
         @foreach($artchart as $product)
         <div class="">
-            <h4 id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
-            <h6 style="font-size:30px">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice"
+            <h4 style="color:#fff;" id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
+            <h6 style="font-size:30px;color:#fff;">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice"
                     style="color:red">{{ $product->product_price }}</b>
                 <p style="font-size:20px">GST : <span>{{ $product->product_gst }}%</span></p>
             </h6>
@@ -27,7 +27,7 @@
                 <i class="fas fa-star-half-alt" style="color: #FFAD33;"></i>
             </div>
 
-            <h6><b>KG :</b>
+            <h6 style="color:#fff;"><b>KG :</b>
                 <button class="btn btn-danger" onclick="changeKG('1kg', {{ $product->id }})">1kg</button>
                 <button class="btn btn-danger" onclick="changeKG('2kg', {{ $product->id }})">2kg</button>
                 <button class="btn btn-danger" onclick="changeKG('3kg', {{ $product->id }})">3kg</button>
@@ -65,27 +65,27 @@
         @csrf <!-- CSRF Protection -->
 
         <div class="form-group">
-            <label for="buyer_name">Name:</label>
+            <label for="buyer_name" style="color:#fff;">Name:</label>
             <input type="text" class="form-control" id="buyer_name" name="buyer_name" placeholder="Enter name" required>
         </div>
 
         <div class="form-group">
-            <label for="address">Address:</label>
+            <label for="address" style="color:#fff;">Address:</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="Enter Delivery Address"
                 required>
         </div>
 
         <div class="form-group">
-            <label for="phone_no">Phone:</label>
-            <input type="text" class="form-control" id="phone_no" name="phone_no" placeholder="Enter phone number"
+            <label for="phone_no" style="color:#fff;">Phone:</label>
+            <input type="text"  class="form-control" id="phone_no" name="phone_no" placeholder="Enter phone number"
                 required>
         </div>
 
         <div>
-            <label class="form-check-label mr-3">
-                <input type="radio" name="ordertype" value="cod" checked> Cash on Delivery
+            <label class="form-check-label mr-3" style="color:#fff;">
+                <input type="radio"  name="ordertype" value="cod" checked> Cash on Delivery
             </label>
-            <label class="form-check-label">
+            <label class="form-check-label" style="color:#fff;">
                 <input type="radio" name="ordertype" value="online"> Online Payment
             </label>
         </div>

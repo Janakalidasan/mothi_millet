@@ -28,21 +28,18 @@
 
   @stack('style')
   <style>
-    /* .bgs{
-    
-    background-image: url('https://img.freepik.com/free-vector/blank-brown-notepaper-design-vector_53876-173620.jpg?t=st=1708539395~exp=1708542995~hmac=e1c769d780a757541b969c08d3df85aea354f6c9312d93e7e6c9859c29e0fbde&w=360'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    } */
     .bgs{
     
-    background-image: url('./assets/images/mothilogo.png'); 
-    background-size: contain; 
-    background-position:center;
-    background-repeat: repeat; 
-    height: 900px;
-
+    background-image: url('https://assets-global.website-files.com/5a9ee6416e90d20001b20038/64f5984389fc94d2acfcbf86_Rectangle%20(13).svg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
     }
+    /* .bgs{
+      background-image: linear-gradient(45deg, #00ff00, #ffffff);  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 900px;
+    } */
   </style>
    
 </head>
