@@ -12,7 +12,7 @@ class ArtToChart extends Authenticatable
 {
     protected $table = 'arttochart';
     protected $primaryKey = 'id';
-    protected $fillable = ['product_id','product_name','product_price','product_gst','image'];
+    protected $fillable = ['product_id','product_name','product_price','product_gst','image','proone'];
     use HasFactory;
 }
 

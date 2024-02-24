@@ -61,6 +61,7 @@
                             @csrf
                             <!-- Include other product details as hidden input fields -->
                             <input type="hidden" name="product_id" value="{{ $productmain['id'] }}">
+                            <input type="hidden" name="proone" value="1">
                             <input type="hidden" name="product_name" value="{{ $productmain['product_title'] }}">
                             <input type="hidden" name="product_price" value="{{ $productmain['price'] }}">
                             <input type="hidden" name="product_gst" value="{{ $productmain['gst'] }}">
@@ -146,6 +147,7 @@
                             @csrf
                             <!-- Include other product details as hidden input fields -->
                             <input type="hidden" name="product_id" value="{{ $productcook['id'] }}">
+                            <input type="hidden" name="proone" value="2">
                             <input type="hidden" name="product_name" value="{{ $productcook['product_title'] }}">
                             <input type="hidden" name="product_price" value="{{ $productcook['price'] }}">
                             <input type="hidden" name="product_gst" value="{{ $productcook['gst'] }}">

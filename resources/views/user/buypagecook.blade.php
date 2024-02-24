@@ -66,6 +66,7 @@
                             @csrf
                             <!-- Include other product details as hidden input fields -->
                             <input type="hidden" name="product_id" value="{{ $productone['id'] }}">
+                            <input type="hidden" name="proone" value="2">
                             <input type="hidden" name="product_name" value="{{ $productone['product_title'] }}">
                             <input type="hidden" name="product_price" value="{{ $productone['price'] }}">
                             <input type="hidden" name="product_gst" value="{{ $productone['gst'] }}">

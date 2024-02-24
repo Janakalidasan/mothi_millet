@@ -131,6 +131,7 @@ class UserController extends Controller
         $productId = $request->input('product_id');
         $productName = $request->input('product_name');
         $productPrice = $request->input('product_price');
+        $proone = $request->input('proone');
         $productGst = $request->input('product_gst');
         $productImage = $request->input('product_image'); // Retrieve product image from the request
         
@@ -138,6 +139,7 @@ class UserController extends Controller
         $cartItem = new ArtToChart();
         $cartItem->user_id = session('id');
         $cartItem->product_id = $productId;
+        $cartItem->proone = $proone;
         $cartItem->product_name = $productName;
         $cartItem->product_price = $productPrice;
         $cartItem->product_gst = $productGst;

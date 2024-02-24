@@ -13,7 +13,16 @@
 
     <div class="row">
         @foreach($artchart as $product)
-             <div class="col-lg-4"> <img src="{{ asset('storage/producttwoimages/' . $product['image']) }}" style="height:290px" alt=""></div>
+             <div class="col-lg-4 d-flex justify-content-center"> 
+        
+            @if($product->proone == "1")
+            <img src="{{ asset('storage/producttwoimages/' . $product['image']) }}" style="height:290px;" alt="">
+            @elseif($product->proone == "2")
+            <img src="{{ asset('storage/productoneimages/' . $product['image']) }}" style="height:230px" alt="">
+            @endif
+
+                <!-- <img src="{{ asset('storage/producttwoimages/' . $product['image']) }}" style="height:290px" alt=""> -->
+            </div>
              <div class="col-lg-8">
              <h4 style="color:#fff;" id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
             <h6 style="font-size:30px;color:#fff;">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice"
@@ -55,7 +64,7 @@
            
 
      
-        <hr style="height:2px;background-color:#fff">
+        <hr style="height:2px;background-color:#fff" class="mt-2">
         @endforeach
 
     </div>
