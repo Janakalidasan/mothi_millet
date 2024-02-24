@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone_no');
             $table->string('product_name');
-
-
+            $table->string('ticketNumber');
             $table->string('kg');
             $table->string('quantity');
             $table->string('total_price');

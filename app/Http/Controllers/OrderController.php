@@ -18,7 +18,9 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $users = Order::paginate(5);
+        // Retrieve paginated orders in descending order based on the primary key (id)
+        $users = Order::orderByDesc('id')->paginate(5);
+        // Pass the orders to the view
         return view('admin.orderdetails')->with('order', $users);
     }
     
@@ -79,21 +81,34 @@ class OrderController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Order status updated successfully']);
     }
+    public function updateTicketNumber(Request $request, $orderId)
+{
+    // Retrieve the order from the database
+    $order = Order::find($orderId);
+
+    if (!$order) {
+        return response()->json(['success' => false, 'message' => 'Order not found']);
+    }
+
+    // Update the ticket number based on the request
+    $newTicketNumber = $request->input('newTicketNumber');
+    $order->ticketNumber = $newTicketNumber;
+    $order->save();
+
+    return response()->json(['success' => true, 'message' => 'Ticket number updated successfully']);
+}
  
     public function orderdashboard() {
         $userId = session('id');
         
         // Retrieve store orders associated with the current user
-        $storeOrders = Order::where('buyer_id', $userId)->paginate(5);
+        $storeOrders = Order::where('buyer_id', $userId)->orderByDesc('id')->paginate(5);
         
         // If there are store orders associated with the user
         if($storeOrders->isNotEmpty()) {
             // Pass the paginated orders to the view
             return view('user.dashboard')->with('order', $storeOrders);
         } else {
-            // If there are no store orders associated with the user
-            // You might want to handle this case, for example, redirect to a page
-            // indicating that there are no orders available.
             return redirect()->back()->with('error', 'No orders found for the current user.');
         }
     }

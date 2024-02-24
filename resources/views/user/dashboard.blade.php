@@ -22,7 +22,8 @@
                     <th>Total Price</th>
                     <th>Order Type</th>
                     <th>Status</th>
-                    <th>Order Date</th>  <!-- New column for action buttons -->
+                    <th>Order Date</th>
+                    <th>Tracking No</th>  <!-- New column for action buttons -->
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@
                     <td>{{ $data['ordertype'] }}</td>
                     <td>{{ $data['status'] }}</td>
                     <td>{{ $data['created_at']->format('Y-m-d') }}</td>
+                    <td>{{ $data['ticketNumber'] }}</td>
 
                 </tr>
                 @endforeach

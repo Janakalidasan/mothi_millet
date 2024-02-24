@@ -12,7 +12,7 @@ class Order extends Authenticatable
 {
     protected $table = 'storeorder';
     protected $primaryKey = 'id';
-    protected $fillable = ['buyer_name','address','phone_no','product_name','kg','quantity','total_price','ordertype','status'];
+    protected $fillable = ['buyer_name','address','phone_no','product_name','kg','quantity','total_price','ordertype','ticketNumber','status'];
     use HasFactory;
 }
 
