@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use App\Models\Admin;
 use App\Models\AdminReg;
 use App\Models\ProductOne;
 use App\Models\ProductTwo;
@@ -19,9 +20,10 @@ class OrderController extends Controller
     public function index()
     {
         // Retrieve paginated orders in descending order based on the primary key (id)
+        $profile = Admin::all();
         $users = Order::orderByDesc('id')->paginate(5);
         // Pass the orders to the view
-        return view('admin.orderdetails')->with('order', $users);
+        return view('admin.orderdetails')->with(['order' => $users, 'admin' => $profile]);
     }
     
     

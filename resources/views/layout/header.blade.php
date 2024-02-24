@@ -2,7 +2,7 @@
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="{{ url('/') }}">
       <img src="{{ url('assets\images\mothi_log.png') }}" style="height:60px" alt="logo" /> </a>
-   
+
     <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
       <img src="{{ url('assets\images\logomini.png') }}" style="width:40px" alt="logo" /> </a>
   </div>
@@ -10,7 +10,7 @@
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
       <span class="mdi mdi-menu"></span>
     </button>
-   
+
     <ul class="navbar-nav navbar-nav-right">
       <!-- <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,8 @@
           <i class="mdi mdi-bell-outline"></i>
           <span class="count bg-success">0</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+          aria-labelledby="notificationDropdown">
           <a class="dropdown-item preview-item py-3">
             <div class="preview-thumbnail">
               <i class="mdi mdi-airballoon m-auto text-primary"></i>
@@ -69,7 +70,7 @@
       <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
           <span class="profile-text d-none d-md-inline-flex">Admin</span>
-          <img class="img-xs rounded-circle" src="{{ url('assets/images/faces/face8.jpg') }}" alt="Profile image"> </a>
+          
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <a class="dropdown-item p-0">
             <div class="d-flex border-bottom w-100 justify-content-center">
@@ -84,15 +85,20 @@
               </div>
             </div>
           </a>
-          <a class="dropdown-item mt-2" href="{{ url('/createprofile') }}">  Create Profile</a>
-          <a class="dropdown-item mt-2" href="{{ url('/updateprofile') }}">  Update Profile</a>
+       
+
+          <a class="dropdown-item mt-2" href="{{ url('/createprofile') }}">Create Profile</a>
+       
+
+          <a class="dropdown-item mt-2" href="{{ url('/updateprofile') }}"> Update Profile</a>
           <a class="dropdown-item" href="{{ url('/profileshow') }}"> View profile</a>
           <a class="dropdown-item"> Check Inbox </a>
           <a class="dropdown-item"> Sign Out </a>
         </div>
       </li>
     </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+      data-toggle="offcanvas">
       <span class="mdi mdi-menu icon-menu"></span>
     </button>
   </div>

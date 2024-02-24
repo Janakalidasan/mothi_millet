@@ -23,24 +23,27 @@ class AdminController extends Controller
     public function dashboard()
     {
         $users = User::all();
+        $profile = Admin::all();
         $userCount = User::count();
         $products = ProductOne::count();
         $productsTwo = ProductTwo::count();
         $totalproduct = $products + $productsTwo;
-        return view('admin.dashboard')->with(['users' => $users, 'usercount' => $userCount,'totalproduct'=> $totalproduct]);
+        return view('admin.dashboard')->with(['users' => $users, 'usercount' => $userCount,'totalproduct'=> $totalproduct, 'admin' =>  $profile]);
     }
 
     public function index()
     {
-        return view('admin.createprofile');
+        $profile = Admin::all();
+        return view('admin.createprofile')->with('admin' , $profile);
     }
     public function viewrate($id = '1'){
+        $profile = Admin::all();
         if ($id) {
             $rating = Rating::find($id);
         } else {
             $rating = null;
         }
-        return view('admin.ratingrprovide')->with('rating', $rating);
+        return view('admin.ratingrprovide')->with(['rating' => $rating, 'admin' => $profile]);
     }
     
  
@@ -171,9 +174,9 @@ class AdminController extends Controller
 
     public function customer(Request $request): View
     {
-       
+        $profile = Admin::all();
         $users = User::paginate(5);
-        return view('admin.customerlist')->with('users' , $users);
+        return view('admin.customerlist')->with(['users' => $users,'admin' =>$profile]);
       
     }
     public function getUsers()
@@ -194,7 +197,8 @@ class AdminController extends Controller
 
     public function productone(): View
     {
-        return view('admin.productaddone');
+        $profile = Admin::all();
+        return view('admin.productaddone')->with('admin', $profile);
     }
     
 
@@ -235,7 +239,8 @@ class AdminController extends Controller
 
 public function producttwo(): View
 {
-    return view('admin.productaddtwo');
+    $profile = Admin::all();
+    return view('admin.productaddtwo')->with('admin', $profile);
 }
 
 public function producttwostore(Request $request): RedirectResponse
@@ -273,9 +278,10 @@ public function producttwostore(Request $request): RedirectResponse
 
 public function category(): View
 {
+    $profile = Admin::all();
     $productone = ProductOne::all();
     $producttwo = ProductTwo::all();
-    return view('admin.categroy')->with(['productone' => $productone, 'producttwo' => $producttwo]);
+    return view('admin.categroy')->with(['productone' => $productone, 'producttwo' => $producttwo,'admin' =>$profile]);
 }
 
 //cooies detele
