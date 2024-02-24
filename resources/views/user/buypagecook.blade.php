@@ -69,6 +69,7 @@
                             <input type="hidden" name="product_name" value="{{ $productone['product_title'] }}">
                             <input type="hidden" name="product_price" value="{{ $productone['price'] }}">
                             <input type="hidden" name="product_gst" value="{{ $productone['gst'] }}">
+                            <input type="hidden" name="product_image" value="{{ $productone['imageone'] }}">
                             <!-- Add to Cart button -->
                             <button type="submit" class="btn btn-danger artchart">Buy Now</button>
                         </form>

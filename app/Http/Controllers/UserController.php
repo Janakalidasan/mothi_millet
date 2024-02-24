@@ -132,8 +132,8 @@ class UserController extends Controller
         $productName = $request->input('product_name');
         $productPrice = $request->input('product_price');
         $productGst = $request->input('product_gst');
-        // You can also retrieve other product details as needed
-    
+        $productImage = $request->input('product_image'); // Retrieve product image from the request
+        
         // Here, you can save the product details to the cart table in the database
         $cartItem = new ArtToChart();
         $cartItem->user_id = session('id');
@@ -141,6 +141,7 @@ class UserController extends Controller
         $cartItem->product_name = $productName;
         $cartItem->product_price = $productPrice;
         $cartItem->product_gst = $productGst;
+        $cartItem->image = $productImage; // Store the image details
         $cartItem->save();
     
         // Redirect back or return a response as needed

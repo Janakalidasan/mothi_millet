@@ -11,10 +11,11 @@
 <div class="container">
     <br>
 
-    <div class="">
+    <div class="row">
         @foreach($artchart as $product)
-        <div class="">
-            <h4 style="color:#fff;" id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
+             <div class="col-lg-4"> <img src="{{ asset('storage/producttwoimages/' . $product['image']) }}" style="height:290px" alt=""></div>
+             <div class="col-lg-8">
+             <h4 style="color:#fff;" id="productName_{{ $product->id }}" class="productName">{{ strtoupper($product->product_name) }}</h4>
             <h6 style="font-size:30px;color:#fff;">Rs: <b id="productPrice_{{ $product->id }}" class="productPrice"
                     style="color:red">{{ $product->product_price }}</b>
                 <p style="font-size:20px">GST : <span>{{ $product->product_gst }}%</span></p>
@@ -49,9 +50,12 @@
                     </div>
                 </div>
             </div>
+             </div>
+           
+           
 
-        </div>
-        <hr>
+     
+        <hr style="height:2px;background-color:#fff">
         @endforeach
 
     </div>
